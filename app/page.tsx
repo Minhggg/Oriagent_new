@@ -1,21 +1,33 @@
-import { HeroSection } from '@/components/landing/herosection'
-import { FeaturesSection } from '@/components/landing/features-section'
-import { ToolkitSection } from '@/components/landing/toolkit-section'
-import { ComparisonSection } from '@/components/landing/comparison-section'
-import { PricingSection } from '@/components/landing/pricing-section'
-import AIAgentsSection from '@/components/landing/agent-can-do'
+import { MainPage } from '@/components/main/page1'
+import { AnimatedCarousel } from '@/components/main/animated-carousel';
 
 export default function Home() {
+  // Sample image URLs - replace with your actual images
+  const leftImages = [
+    '/img1.svg',
+    '/img2.svg',
+    '/img3.svg',
+    '/img4.svg',
+    '/img5.svg',
+    '/img6.svg',
+    '/img7.svg',
+  ];
+
+  const rightImages = [
+    '/img8.svg',
+    '/img9.svg',
+    '/img10.svg',
+    '/img11.svg',
+    '/img12.svg',
+    '/img13.svg',
+    '/img14.svg',
+  ];
+
   return (
-    <main>
-      <HeroSection />
-      <FeaturesSection />
-      <AIAgentsSection />
-      <ToolkitSection />
-      <ComparisonSection />
-      <PricingSection />
-
-
+    <main className="min-h-screen bg-background">
+      <MainPage />
+      <AnimatedCarousel leftImages={leftImages} rightImages={rightImages} />
     </main>
-  )
+  );
 }
+
