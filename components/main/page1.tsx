@@ -7,8 +7,8 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Mail, PhoneCall } from "lucide-react";
 export function MainPage() {
   return (
-    <section className="border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-16   text-left border-x border-gray-200">
+    <section className="">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-16 border-b   text-left border-x border-gray-200">
 
         {/* Badge */}
         <div className="mb-6">
@@ -81,6 +81,35 @@ export function MainPage() {
           <div className="text-xs">
             <p className="font-semibold text-gray-900">47,000+</p>
             <p className="text-gray-600">Loved by users</p>
+          </div>
+        </div>
+        <div className="mt-10 flex flex-col items-start gap-2 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
+          {/* Label nhỏ bên trên */}
+          <span className="text-xs text-gray-400 font-medium">Grants from</span>
+
+          <div className="flex items-center gap-3">
+
+            {/* 1. Microsoft Block */}
+            <div className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
+              {/* --- CHỖ NÀY THAY BẰNG LOGO CỦA BẠN --- */}
+              {/* Ví dụ: <img src="/microsoft.png" className="w-5 h-5" /> hoặc <MicrosoftIcon /> */}
+
+              {/* ---------------------------------------- */}
+              <span className="text-sm font-semibold text-gray-500">Microsoft</span>
+            </div>
+
+            {/* Dấu chấm ngăn cách */}
+            <span className="text-gray-500 text-[10px]">•</span>
+
+            {/* 2. OpenAI Block */}
+            <div className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
+              {/* --- CHỖ NÀY THAY BẰNG LOGO CỦA BẠN --- */}
+              {/* Ví dụ: <img src="/openai.png" className="w-5 h-5" /> hoặc <OpenAIIcon /> */}
+
+              {/* ---------------------------------------- */}
+              <span className="text-sm font-semibold text-gray-500">OpenAI</span>
+            </div>
+
           </div>
         </div>
 

@@ -54,7 +54,7 @@ export function MainNav() {
   return (
     <div className="flex sticky top-0 z-50 bg-white items-center justify-between h-20 px-8 border-b">
       {/* Logo/Tên Thương hiệu */}
-      <Link href="/" className="flex items-center space-x-2">
+      <Link href="/" className="flex items-center space-x-2 p-0 lg:p-10">
         <span className="text-xl font-bold">✨ Oriagent</span>
       </Link>
 

@@ -1,30 +1,53 @@
+// components/main/AgentUseCases.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button' // Giả định bạn có component UI này hoặc dùng thẻ button thường
 import {
-  Sparkles, Users2, Calendar, ArrowRight, Mail, CalendarDays,
-  Lightbulb, FileText, Database, Settings, Play, Search, Share2, LayoutTemplate,
-  Brain
-
+  Sparkles, Users, Calendar, Lightbulb, FileText, Users2,
+  Database, Settings, Play, Search, Share2, LayoutTemplate, CalendarDays,
+  // Import thêm các icon cho Tabs
+  Bot, Megaphone, DollarSign, Smartphone, Check, Phone, Mail
 } from 'lucide-react'
-import Link from 'next/link'
 
-// Data cho Tabs
+// --- DATA ---
+// Cập nhật thêm Icon và Class màu sắc cho từng Tab để giống ảnh
 const agentTabs = [
-  { id: 'custom', label: 'Custom AI Agent', description: 'Your fully customizable AI agent' },
-  { id: 'marketing', label: 'Marketing', description: 'SEO • Content • Social' },
-  { id: 'sales', label: 'Sales', description: 'Prospect • Enrichment • Outreach' },
-  { id: 'chat', label: 'Chat', description: 'Anything else you need help with' },
+  {
+    id: 'custom',
+    label: 'Custom AI Agent',
+    description: 'Your fully customizable AI agent',
+    icon: Bot,
+    colorClass: 'text-lime-500' // Màu xanh lá (Robot)
+  },
+  {
+    id: 'marketing',
+    label: 'Marketing',
+    description: 'SEO • Content • Social',
+    icon: Megaphone,
+    colorClass: 'text-blue-500' // Màu xanh dương (Loa)
+  },
+  {
+    id: 'sales',
+    label: 'Sales',
+    description: 'Prospect • Enrichment • Outreach',
+    icon: DollarSign,
+    colorClass: 'text-orange-500' // Màu cam ($)
+  },
+  {
+    id: 'chat',
+    label: 'Chat',
+    description: 'Anything else you need help with',
+    icon: Smartphone, // Hoặc Tablet
+    colorClass: 'text-yellow-500' // Màu vàng (Điện thoại)
+  },
 ]
 
-// Data cho nội dung bên trái
+// ... (Giữ nguyên phần agentFeatures và rotatingContent) ...
 const agentFeatures = [
   {
-    icon: Brain,
+    icon: Bot,
     title: 'Custom AI Agent',
     description: 'Create your own specialized AI agent with custom instructions, knowledge, and tools to handle specific tasks for your business.',
-    // Map icon cho từng step giả lập
     steps: [
       { label: 'Define Purpose', icon: Lightbulb },
       { label: 'Set Instructions', icon: FileText },
@@ -37,7 +60,7 @@ const agentFeatures = [
     active: true
   },
   {
-    icon: Users2,
+    icon: Users,
     title: 'Multi-agent Teams',
     description: 'Build teams of specialized AI agents that work together to accomplish complex tasks with collaborative problem-solving.',
     steps: [
@@ -47,7 +70,6 @@ const agentFeatures = [
       { label: 'Monitor Progress', icon: Search },
       { label: 'Review Output', icon: LayoutTemplate }
     ],
-
     badge: 'Coming soon',
     active: false
   },
@@ -62,13 +84,11 @@ const agentFeatures = [
       { label: 'Configure Output', icon: Settings },
       { label: 'Activate', icon: Play }
     ],
-
     badge: 'Coming soon',
     active: false
   },
 ]
 
-// Data cho Animation bên phải (Khớp màu ảnh: Tím -> Xanh -> Vàng)
 const rotatingContent = [
   { agent: '@ContentWriter', useCase: '#PersonaPainMatrix', goal: 'SEO content' },
   { agent: '@SalesBot', useCase: '#LeadScoring', goal: 'qualified leads' },
@@ -79,130 +99,130 @@ export function AIAgentsSection() {
   const [activeTab, setActiveTab] = useState('custom')
   const [contentIndex, setContentIndex] = useState(0)
 
-  // Hiệu ứng chuyển chữ bên phải
   useEffect(() => {
     const interval = setInterval(() => {
       setContentIndex((prev) => (prev + 1) % rotatingContent.length)
-    }, 2500) // Chậm lại chút cho dễ đọc
+    }, 2500)
     return () => clearInterval(interval)
   }, [])
 
   const currentContent = rotatingContent[contentIndex]
 
   return (
-    <section className="pb-20 pt-0 bg-white border-b border-gray-200">
-      <div className="mx-auto max-w-7xl border-x border-gray-200 px-0 py-16 text-center">
+    <section className="">
 
-        {/* --- HEADER --- */}
-        <div className="mb-16 text-center max-w-3xl mx-auto ">
-          {/* Tag Use Cases */}
-          <div className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0fdf4] border border-[#dcfce7] text-xs font-bold text-green-600 uppercase tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-green-500"></span>
+      <div className="mx-auto max-w-7xl border-x border-b  border-gray-200 bg-white">
+
+        {/* --- 1. HEADER --- */}
+        <div className="px-8 py-12 lg:py-16 text-center">
+          <div className="mb-6 flex justify-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f0fdf4] px-3 py-1 text-xs font-bold tracking-wide text-green-600 uppercase border border-[#dcfce7]">
+              <span className="h-2 w-2 rounded-full bg-green-500"></span>
               Use Cases
             </span>
           </div>
 
-          {/* Main Title */}
-          <h1 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+          <h1 className="mb-6 text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
             What can AI Agents{' '}
             <span className="relative inline-block">
               do?
-              {/* Gạch chân màu vàng chanh */}
-              <span className="absolute bottom-1 left-0 w-full h-3 bg-[#bef264] -z-10 transform -rotate-1"></span>
+              <span className="absolute -z-10 bottom-1 left-0 h-3 w-full -rotate-1 transform bg-[#bef264]"></span>
             </span>
           </h1>
-          <p className="text-lg text-gray-500">
+          <p className="mx-auto max-w-2xl text-base lg:text-lg text-gray-500">
             Discover the wide range of tasks our AI agents can handle to streamline your workflow and boost efficiency.
           </p>
         </div>
 
-        {/* --- TABS --- */}
-        <div className="grid grid-cols-1 md:grid-cols-4 border-y border-gray-200 divide-y md:divide-y-0 md:divide-x divide-gray-200  ">
+        {/* --- 2. TABS (Đã sửa responsive) --- */}
+        {/* grid-cols-4 áp dụng cho cả mobile để luôn nằm ngang */}
+        <div className="grid grid-cols-4 divide-x divide-gray-200 border-y border-gray-200">
           {agentTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`p-6 text-left transition-colors relative group h-full
+              className={`group relative h-full transition-colors
+                /* Padding khác nhau cho mobile/desktop */
+                p-4 md:p-6 text-left 
                 ${activeTab === tab.id ? 'bg-[#f7fee7]' : 'bg-white hover:bg-gray-50'}
               `}
             >
-              {/* Border top highlight cho tab active */}
+              {/* Highlight bar active: Chỉ hiện trên desktop hoặc nếu thích thì hiện cả mobile */}
               {activeTab === tab.id && (
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#bef264]"></div>
+                <div className="absolute left-0 top-0 h-1 w-full bg-[#bef264]"></div>
               )}
-              <h3 className={`font-bold text-sm mb-1 ${activeTab === tab.id ? 'text-gray-900' : 'text-gray-900'}`}>
-                {tab.label}
-              </h3>
-              <p className="text-xs text-gray-500">{tab.description}</p>
+
+              {/* --- CONTENT CHO MOBILE (Chỉ hiện Icon ở giữa) --- */}
+              <div className="flex items-center justify-center md:hidden">
+                <tab.icon
+                  className={`h-6 w-6 ${activeTab === tab.id ? tab.colorClass : 'text-gray-400'}`}
+                  strokeWidth={2.5}
+                />
+              </div>
+
+              {/* --- CONTENT CHO DESKTOP (Ẩn trên mobile) --- */}
+              <div className="hidden md:block">
+                <h3 className="mb-1 text-sm font-bold text-gray-900">
+                  {tab.label}
+                </h3>
+                <p className="text-xs text-gray-500">{tab.description}</p>
+              </div>
             </button>
           ))}
         </div>
 
-        {/* --- CONTENT GRID --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:divide-x divide-gray-200 border-b border-gray-200  ">
+        {/* --- 3. CONTENT GRID --- */}
+        <div className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
 
-          {/* === LEFT COLUMN: List Features === */}
-          <div className="pr-0 lg:pr-12 space-y-10 px-6 my-12 lg:py-0">
-            {/* Header Left */}
+          {/* Left Column */}
+          <div className="space-y-8 p-6 lg:p-10">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-medium text-gray-900">Custom AI Agents</h2>
-              <button className="px-4 py-1.5 text-xs font-medium border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
+              <h2 className="text-2xl font-bold text-gray-900">Custom AI Agents</h2>
+              <button className="rounded-full border border-gray-300 px-4 py-1.5 text-xs font-medium transition-colors hover:bg-gray-50">
                 Explore Agents
               </button>
             </div>
 
-            {/* Cards Loop */}
             <div className="space-y-6">
               {agentFeatures.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
-                  // 1. Sửa class để cả 3 card giống hệt nhau (bg-white, border-gray-200)
-                  <div
-                    key={idx}
-                    className="flex flex-col px-6 py-4 rounded-xl border border-gray-50 bg-yellow-50/10 transition-all hover:border-gray-300"
-                  >
-                    {/* Phần trên: Icon + Title + Description */}
-                    <div className="w-full mb-2">
+                  <div key={idx} className="flex flex-col rounded-xl bg-[#d4e8b1e3] hover:border-gray-300 py-3 px-5">
 
-                      {/* 1. Header: Icon + Title nằm cùng 1 dòng */}
-                      <div className="flex items-center gap-3 mb-3">
-                        {/* Icon Wrapper */}
-                        <div className={`p-1.5 rounded-md h-fit `}>
-                          <Icon className="w-5 h-5" /> {/* Tăng size icon lên chút cho cân đối với Title */}
-                        </div>
-
-                        {/* Title & Badge */}
-                        <div className="flex items-center gap-2">
-                          <h3 className="font-bold text-sm text-gray-900">{feature.title}</h3>
-                          {feature.badge && (
-                            <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-[10px] font-semibold rounded-full uppercase tracking-wide">
-                              {feature.badge}
-                            </span>
-                          )}
-                        </div>
+                    {/* Header: Icon + Title */}
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-fit items-center justify-center rounded-md bg-purple-50 p-2 text-purple-600">
+                        <Icon className="h-5 w-5" />
                       </div>
-
-                      {/* 2. Description: Xuống dòng, full width, sát lề trái */}
-                      <p className="text-xs text-left text-gray-500 leading-relaxed">
-                        {feature.description}
-                      </p>
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-lg font-bold text-gray-900">{feature.title}</h3>
+                        {feature.badge && (
+                          <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gray-600">
+                            {feature.badge}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
-                    {/* Steps: Vẫn giữ thụt đầu dòng cho đẹp mắt (thẳng với text ở trên) */}
-                    <div className="flex flex-wrap gap-x-2 gap-y-2 mb-2 ">
+                    {/* Description */}
+                    <p className="mb-6 text-left text-sm leading-relaxed text-gray-500">
+                      {feature.description}
+                    </p>
+
+                    {/* Steps */}
+                    <div className="mb-6 flex flex-wrap gap-x-4 gap-y-3">
                       {feature.steps.map((step, sIdx) => (
-                        <div key={sIdx} className="flex items-center gap-x-1  font-bold rounded-2xl  px-1 py-0.5">
-                          <step.icon className="w-3 h-3 text-orange-400" />
-                          <span className="text-xs text-gray-500">{step.label}</span>
+                        <div key={sIdx} className="flex items-center gap-2 text-xs font-medium text-gray-500">
+                          <step.icon className="h-3.5 w-3.5 text-orange-400" />
+                          <span>{step.label}</span>
                         </div>
                       ))}
                     </div>
 
-                    {/* Button: Nằm cuối cùng và Căn trái tuyệt đối (Bỏ padding-left) */}
+                    {/* Button */}
                     {feature.cta && (
-                      <div className="mt-0 pt-1 pb-0 text-left">
-                        <button className="px-2 py-1 bg-black text-white text-xs font-mono rounded-full hover:bg-gray-800 transition-colors">
+                      <div className="mt-auto">
+                        <button className="rounded-full bg-black px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800">
                           {feature.cta}
                         </button>
                       </div>
@@ -212,48 +232,45 @@ export function AIAgentsSection() {
               })}
             </div>
 
-            {/* Footer Box (Giữ nguyên) */}
-            <div className="mt-0 pt-0 p-6 bg-transparent">
-              <p className="text-sm text-left text-gray-600 mb-4">
+            {/* Footer Box */}
+            <div className="rounded-xl ">
+              <p className="mb-4 text-sm text-gray-600">
                 If you have a specific usecase in mind, we can help you build a custom solution.
               </p>
               <div className="flex gap-3">
-                <button className="flex-1 px-4 py-2.5 bg-[#bef264] text-gray-600 text-sm font-semibold rounded-full hover:bg-[#aacc2e] transition-colors">
-                  Book a call
+                <button className="flex-1 rounded-full bg-[#c4f20c] px-4 py-2.5 text-sm font-medium text-[#606e28] transition-colors hover:bg-[#aacc2e] flex items-center justify-center gap-2">
+                  <Smartphone className='h-4 w-4' />Book a call
                 </button>
-                <button className="flex-1 px-4 py-2.5 bg-white border border-gray-200 text-gray-900 text-sm font-semibold rounded-full hover:bg-gray-50 transition-colors">
-                  Email us
+                <button className="flex-1 rounded-full border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 flex items-center justify-center gap-2">
+                  <Mail className='h-4 w-4' /> Email us
                 </button>
               </div>
             </div>
           </div>
 
-          {/* === RIGHT COLUMN: Dynamic Visualization === */}
-          <div className="hidden lg:flex flex-col justify-center items-center pl-0 lg:pl-12 min-h-[600px] px-3 py-6 lg:py-0">
+          {/* Right Column */}
+          <div className="hidden min-h-[600px] flex-col items-center justify-center bg-white p-8 lg:flex">
             <div className="flex flex-col items-center space-y-6">
-              <span className="text-2xl text-gray-400 font-light">Try using</span>
+              <span className="text-2xl font-light text-gray-400">Try using</span>
 
-              {/* Purple Pill */}
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500" key={`agent-${contentIndex}`}>
-                <div className="px-8 py-4 bg-purple-100 rounded-2xl text-3xl font-bold text-purple-600 shadow-sm">
+                <div className="rounded-2xl bg-purple-100 px-8 py-4 text-3xl font-bold text-purple-600 shadow-sm">
                   {currentContent.agent}
                 </div>
               </div>
 
-              <span className="text-2xl text-gray-400 font-light">to</span>
+              <span className="text-2xl font-light text-gray-400">to</span>
 
-              {/* Blue Pill */}
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-700" key={`usecase-${contentIndex}`}>
-                <div className="px-8 py-4 bg-blue-100 rounded-2xl text-3xl font-bold text-blue-600 shadow-sm">
+                <div className="rounded-2xl bg-blue-100 px-8 py-4 text-3xl font-bold text-blue-600 shadow-sm">
                   {currentContent.useCase}
                 </div>
               </div>
 
-              <span className="text-2xl text-gray-400 font-light">for your</span>
+              <span className="text-2xl font-light text-gray-400">for your</span>
 
-              {/* Yellow Pill */}
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000" key={`goal-${contentIndex}`}>
-                <div className="px-8 py-4 bg-amber-100 rounded-2xl text-3xl font-bold text-amber-600 shadow-sm">
+                <div className="rounded-2xl bg-amber-100 px-8 py-4 text-3xl font-bold text-amber-600 shadow-sm">
                   {currentContent.goal}
                 </div>
               </div>

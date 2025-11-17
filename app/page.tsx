@@ -1,7 +1,10 @@
 import { MainPage } from '@/components/main/page1'
+
 import { AnimatedCarousel } from '@/components/main/animated-carousel';
 import { DefinitionSection } from '@/components/main/definition';
 import { AIAgentsSection } from '@/components/main/agent-use-case';
+import { FAQSection } from '@/components/main/faq';
+import { Main } from 'next/document';
 export default function Home() {
   // Sample image URLs - replace with your actual images
   const leftImages = [
@@ -37,11 +40,15 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-background pt-0">
+    <main className="min-h-screen bg-background pt-0 mt-0">
       <MainPage />
       <AnimatedCarousel leftImages={leftImages} rightImages={rightImages} />
       <DefinitionSection />
       <AIAgentsSection />
+      <FAQSection />
+
+      <MainPage />
+
     </main>
   );
 }

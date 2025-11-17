@@ -8,7 +8,7 @@ import AIAgentsSection from '@/components/landing/agent-can-do'
 
 export default function DoneForYouPage() {
   return (
-    <main>
+    <main >
       <HeroSection />
       <FeaturesSection />
       <AIAgentsSection />

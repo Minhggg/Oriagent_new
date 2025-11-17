@@ -7,7 +7,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Mail, PhoneCall } from "lucide-react";
 export function HeroSection() {
   return (
-    <section className="relative pt-0 pb-20 px-4 sm:px-6 lg:px-8">
+    <section className="relative pt-0 pb-20 px-4 sm:px-6 lg:px-8 pt-16">
       <div className="max-w-4xl mx-auto text-center">
         {/* Badge */}
         <div className="flex justify-center mb-6">

@@ -40,7 +40,7 @@ export default function RootLayout({
           </div>
 
           {/* 2. NỘI DUNG CHÍNH - pt-16 để tránh bị Header che */}
-          <main className="grow pt-16">
+          <main className="grow pt-0">
             {children}
           </main>
 

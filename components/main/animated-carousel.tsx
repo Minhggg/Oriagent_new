@@ -9,8 +9,8 @@ interface AnimatedCarouselProps {
 
 export function AnimatedCarousel({ leftImages, rightImages }: AnimatedCarouselProps) {
   return (
-    <section className="border-b border-gray-200 bg-white">
-      <div className="container mx-auto max-w-7xl px-0 py-0">
+    <section className="">
+      <div className="container mx-auto max-w-7xl px-0 py-0 border-b border-gray-200 bg-white">
         {/* Main Border Box */}
         <div className="grid grid-cols-1 border-x border-gray-200 lg:grid-cols-2">
 
