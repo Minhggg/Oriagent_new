@@ -1,7 +1,24 @@
 // components/main-nav.tsx
+'use client';
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Monitor, ChevronDown } from "lucide-react";
+import {
+  Monitor,
+  ChevronDown,
+  BookOpen,
+  Target,
+  LayoutTemplate,
+  Bitcoin,
+  ShieldCheck,
+  Bot,
+  Handshake,
+  Menu,
+  X,
+  User,
+  FileText, // Icon cho Blog/Change log
+  CreditCard // Icon cho Pricing
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,104 +26,223 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModeToggle } from "@/components/ModeToggle";
 
-// --- ĐỊNH NGHĨA KIỂU DỮ LIỆU (TYPESCRIPT) ---
-
-// 1. Định nghĩa kiểu cho các liên kết con trong Dropdown
+// --- TYPES ---
 interface DropdownLink {
   href: string;
   label: string;
+  description: string;
+  icon: any;
 }
 
-// 2. Định nghĩa kiểu cho mục Menu có Dropdown
 interface NavItemWithDropdown {
   label: string;
-  dropdown: true; // Bắt buộc phải là true
-  links: DropdownLink[]; // Bắt buộc phải có thuộc tính links
+  dropdown: true;
+  links: DropdownLink[];
 }
 
-// 3. Định nghĩa kiểu cho mục Menu Đơn (chỉ có link)
 interface NavItemWithLink {
   label: string;
-  dropdown: false; // Bắt buộc phải là false
-  href: string; // Bắt buộc phải có thuộc tính href
+  dropdown: false;
+  href: string;
 }
 
-// Type chính: Một mục menu CÓ THỂ là Dropdown HOẶC là Link Đơn
 type NavItem = NavItemWithDropdown | NavItemWithLink;
 
-
 export function MainNav() {
-  // Gán kiểu dữ liệu đã định nghĩa cho mảng navItems
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Khóa cuộn trang khi mở menu
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
+
+  // Dữ liệu menu khớp hoàn toàn với ảnh
   const navItems: NavItem[] = [
     {
-      label: "Solutions", dropdown: true, links: [
-        { href: "/done-for-you", label: "Done For You" },
-        { href: "/templates", label: "Templates" },
+      label: "Solutions",
+      dropdown: true,
+      links: [
+        { href: "/ai-agents", label: "AI Agents", description: "", icon: Bot },
+        { href: "/done-for-you", label: "Done-for-You", description: "", icon: Handshake },
       ]
     },
-    { label: "Content", dropdown: false, href: "/content" },
+    {
+      label: "Content",
+      dropdown: true,
+      links: [
+        { href: "/blog", label: "Blog", description: "", icon: BookOpen },
+        { href: "/use-cases", label: "Use Cases", description: "", icon: Target },
+        { href: "/template", label: "Template", description: "", icon: LayoutTemplate },
+        { href: "/aaa", label: "AAA", description: "", icon: Bitcoin },
+        { href: "/legal", label: "Legal", description: "", icon: ShieldCheck },
+      ]
+    },
+    // Change log và Pricing là link đơn, không có dropdown
     { label: "Change log", dropdown: false, href: "/changelog" },
     { label: "Pricing", dropdown: false, href: "/pricing" },
   ];
 
   return (
-    <div className="flex sticky top-0 z-50 bg-white items-center justify-between h-20 px-8 border-b">
-      {/* Logo/Tên Thương hiệu */}
-      <Link href="/" className="flex items-center space-x-2 p-0 lg:p-10">
-        <span className="text-xl font-bold">✨ Oriagent</span>
-      </Link>
+    <>
+      {/* --- NAVBAR CHÍNH --- */}
+      <div className="sticky top-0 z-40 w-full bg-white border-b">
+        <div className="flex h-20 items-center justify-between px-6 lg:px-8">
 
-      {/* Các liên kết chính giữa */}
-      <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-        {/* Lặp qua từng mục trong mảng navItems */}
-        {navItems.map((item) => (
-          <div key={item.label}>
-            {/* KIỂM TRA: Nếu là dropdown, render DropdownMenu */}
-            {item.dropdown ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-gray-600 hover:text-black transition-colors outline-none focus:ring-0">
-                  {item.label} <ChevronDown className="ml-1 h-4 w-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  {/* Bây giờ TypeScript biết item.links chắc chắn tồn tại */}
-                  {item.links.map((link) => (
-                    <DropdownMenuItem key={link.href} asChild>
-                      <Link href={link.href}>{link.label}</Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              /* NGƯỢC LẠI: Render Link đơn */
-              <Link
-                // TypeScript biết item.href chắc chắn tồn tại vì item.dropdown là false
-                href={item.href}
-                className="text-gray-600 hover:text-black transition-colors"
-              >
-                {item.label}
-              </Link>
-            )}
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 z-50">
+            <div className="flex text-black text-2xl font-bold tracking-tighter">
+              ✦✦
+            </div>
+          </Link>
+
+          {/* Desktop Nav (Ẩn trên mobile) */}
+          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+            {navItems.map((item) => (
+              <div key={item.label}>
+                {item.dropdown ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="group flex items-center gap-1 text-gray-600 hover:text-black transition-colors outline-none focus:ring-0">
+                      {item.label}
+                      <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" sideOffset={15} className="w-[600px] p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                      <div className="grid grid-cols-2 gap-2">
+                        {item.links.map((link) => (
+                          <DropdownMenuItem key={link.href} asChild>
+                            <Link href={link.href} className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer outline-none select-none">
+                              <div className="mt-0.5 text-gray-500"><link.icon className="h-5 w-5" strokeWidth={1.5} /></div>
+                              <div>
+                                <div className="text-sm font-semibold text-gray-900">{link.label}</div>
+                                <p className="text-xs text-gray-500 mt-0.5 font-normal leading-snug">{link.description || link.label}</p>
+                              </div>
+                            </Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link href={item.href} className="text-gray-600 hover:text-black transition-colors">
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Monitor className="h-5 w-5 text-gray-600 cursor-pointer hover:text-black transition-colors" />
+            <Button variant="outline" size="sm" className="rounded-full text-sm font-medium h-9 px-4">
+              Sign In
+            </Button>
           </div>
-        ))}
-      </nav>
 
-      {/* Nút Đăng nhập/Menu bên phải */}
-      <div className="flex items-center space-x-4">
-        {/* Icon Monitor (Biểu tượng mới) */}
-        {/* <ModeToggle className="h-5 w-5 text-gray-600 cursor-pointer hover:text-black transition-colors" /> */}
-        <Monitor className="h-5 w-5 text-gray-600 cursor-pointer hover:text-black transition-colors" />
-
-        {/* Nút Sign In (Kiểu Outline) */}
-        <Button
-          variant="outline"
-          size="sm"
-          className="rounded-full text-sm font-medium h-9 px-4"
-        >
-          Sign In
-        </Button>
+          {/* Mobile Menu Trigger */}
+          <button
+            className="md:hidden p-2 text-gray-600 hover:text-black z-50"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* --- MOBILE MENU OVERLAY (Slide từ phải sang) --- */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] flex justify-end">
+
+          {/* 1. LỚP NỀN TỐI (Overlay) */}
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-[2px] transition-opacity"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+
+          {/* 2. BẢNG MENU (Drawer) */}
+          <div className="relative flex flex-col w-[85%] max-w-[350px] h-full bg-white shadow-2xl animate-in slide-in-from-right duration-300">
+
+            {/* Nút Đóng (X) có vòng tròn như ảnh */}
+            <div className="flex justify-end p-5 pt-6">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="group rounded-full border border-gray-300 p-1.5 hover:bg-gray-100 transition-colors"
+              >
+                <X className="h-5 w-5 text-gray-600 group-hover:text-black" strokeWidth={1.5} />
+              </button>
+            </div>
+
+            {/* Nội dung cuộn */}
+            <div className="flex-1 overflow-y-auto px-8 pb-6">
+              <div className="space-y-8">
+
+                {/* === PHẦN MENU CHÍNH === */}
+                {navItems.map((item) => (
+                  <div key={item.label}>
+                    {item.dropdown ? (
+                      // Render Group (Solutions, Content)
+                      <div className="space-y-4">
+                        <h3 className="text-sm font-medium text-gray-500">
+                          {item.label}
+                        </h3>
+                        <div className="space-y-5 pl-2">
+                          {item.links.map((link) => (
+                            <Link
+                              key={link.label}
+                              href={link.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="flex items-center gap-4 text-[16px] font-normal text-gray-800 hover:text-black"
+                            >
+                              <link.icon className="h-5 w-5 text-gray-900" strokeWidth={1.5} />
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      // Render Link lẻ (Change log, Pricing) - Nằm ngang hàng các group
+                      <div className="pt-2">
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-[16px] font-normal text-gray-800 hover:text-black"
+                        >
+                          {item.label}
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* === FOOTER (Light Mode + Sign In) === */}
+            <div className="p-6 px-8 border-t border-gray-100 bg-white">
+              <div className="space-y-6">
+                {/* Light Mode Toggle */}
+                <button className="flex items-center gap-3 text-gray-800 font-normal text-base hover:text-black">
+                  <Monitor className="h-5 w-5" strokeWidth={1.5} />
+                  Light Mode
+                </button>
+
+                {/* Sign In Button */}
+                <Button
+                  className="w-full rounded-full border border-gray-200 bg-white text-black hover:bg-gray-50 h-12 text-base font-normal shadow-sm flex items-center justify-center gap-2"
+                  variant="outline"
+                >
+                  <User className="h-4 w-4" strokeWidth={1.5} />
+                  Sign In
+                </Button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </>
   );
 }
