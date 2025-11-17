@@ -8,7 +8,7 @@ import { Mail, PhoneCall } from "lucide-react";
 export function MainPage() {
   return (
     <section className="border-b border-gray-200">
-      <div className="max-w-5xl mx-auto px-6 py-16   text-left border-x border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-16   text-left border-x border-gray-200">
 
         {/* Badge */}
         <div className="mb-6">

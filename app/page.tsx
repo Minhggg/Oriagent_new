@@ -1,6 +1,7 @@
 import { MainPage } from '@/components/main/page1'
 import { AnimatedCarousel } from '@/components/main/animated-carousel';
-
+import { DefinitionSection } from '@/components/main/definition';
+import { AIAgentsSection } from '@/components/main/agent-use-case';
 export default function Home() {
   // Sample image URLs - replace with your actual images
   const leftImages = [
@@ -11,22 +12,36 @@ export default function Home() {
     '/img5.svg',
     '/img6.svg',
     '/img7.svg',
-  ];
-
-  const rightImages = [
     '/img8.svg',
     '/img9.svg',
     '/img10.svg',
     '/img11.svg',
     '/img12.svg',
     '/img13.svg',
+  ];
+
+  const rightImages = [
     '/img14.svg',
+    '/img15.svg',
+    '/img16.svg',
+    '/img17.svg',
+    '/img18.svg',
+    '/img19.svg',
+    '/img20.svg',
+    '/img21.svg',
+    '/img22.svg',
+    '/img23.svg',
+    '/img24.svg',
+    '/img25.svg',
+    '/img26.svg',
   ];
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pt-0">
       <MainPage />
       <AnimatedCarousel leftImages={leftImages} rightImages={rightImages} />
+      <DefinitionSection />
+      <AIAgentsSection />
     </main>
   );
 }

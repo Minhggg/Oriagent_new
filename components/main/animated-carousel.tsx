@@ -10,7 +10,7 @@ interface AnimatedCarouselProps {
 export function AnimatedCarousel({ leftImages, rightImages }: AnimatedCarouselProps) {
   return (
     <section className="border-b border-gray-200 bg-white">
-      <div className="container mx-auto max-w-5xl px-0 py-0">
+      <div className="container mx-auto max-w-7xl px-0 py-0">
         {/* Main Border Box */}
         <div className="grid grid-cols-1 border-x border-gray-200 lg:grid-cols-2">
 
@@ -27,12 +27,12 @@ export function AnimatedCarousel({ leftImages, rightImages }: AnimatedCarouselPr
                 {leftImages.map((image, idx) => (
                   <div
                     key={`left-${idx}`}
-                    className="flex h-4 w-24 flex-shrink-0 items-center justify-center"
+                    className="flex h-6 w-24 flex-shrink-0 items-center justify-center"
                   >
                     <img
                       src={image || "/placeholder.svg"}
                       alt={`Logo ${idx + 1}`}
-                      className="max-h-4 max-w-full object-contain "
+                      className="max-h-6 max-w-full object-contain "
                     />
                   </div>
                 ))}
@@ -40,12 +40,12 @@ export function AnimatedCarousel({ leftImages, rightImages }: AnimatedCarouselPr
                 {leftImages.map((image, idx) => (
                   <div
                     key={`left-dup-${idx}`}
-                    className="flex h-4 w-24 flex-shrink-0 items-center justify-center"
+                    className="flex h-6 w-24 flex-shrink-0 items-center justify-center"
                   >
                     <img
                       src={image || "/placeholder.svg"}
                       alt={`Logo ${idx + 1}`}
-                      className="max-h-4 max-w-full object-contain "
+                      className="max-h-6 max-w-full object-contain "
                     />
                   </div>
                 ))}
@@ -65,12 +65,12 @@ export function AnimatedCarousel({ leftImages, rightImages }: AnimatedCarouselPr
                 {rightImages.map((image, idx) => (
                   <div
                     key={`right-${idx}`}
-                    className="flex h-4 w-24 flex-shrink-0 items-center justify-center"
+                    className="flex h-6 w-24 flex-shrink-0 items-center justify-center"
                   >
                     <img
                       src={image || "/placeholder.svg"}
                       alt={`Logo ${idx + 6}`}
-                      className="max-h-4 max-w-full object-contain "
+                      className="max-h-6 max-w-full object-contain "
                     />
                   </div>
                 ))}
@@ -78,12 +78,12 @@ export function AnimatedCarousel({ leftImages, rightImages }: AnimatedCarouselPr
                 {rightImages.map((image, idx) => (
                   <div
                     key={`right-dup-${idx}`}
-                    className="flex h-4 w-24 flex-shrink-0 items-center justify-center"
+                    className="flex h-6 w-24 flex-shrink-0 items-center justify-center"
                   >
                     <img
                       src={image || "/placeholder.svg"}
                       alt={`Logo ${idx + 6}`}
-                      className="max-h-4 max-w-full object-contain "
+                      className="max-h-6 max-w-full object-contain "
                     />
                   </div>
                 ))}
