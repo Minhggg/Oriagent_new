@@ -5,9 +5,9 @@ import { PronunciationButton } from './PronunciationButton'; // Đảm bảo đ�
 
 export function DefinitionSection() {
   return (
-    <section className="border-b border-gray-200 bg-white">
+    <section className="">
       {/* Khung bao ngoài: Giữ chuẩn kích thước và viền để khớp với các section khác */}
-      <div className="mx-auto max-w-7xl border-x border-gray-200 px-0 py-16 text-left">
+      <div className="mx-auto max-w-7xl border-b  bg-white border-x border-gray-200 px-0 py-16 text-left">
 
         {/* Nội dung chính: Padding trong để chữ không dính viền */}
         <div className="mx-auto max-w-5xl px-8">

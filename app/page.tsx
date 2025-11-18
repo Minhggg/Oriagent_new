@@ -5,6 +5,9 @@ import { DefinitionSection } from '@/components/main/definition';
 import { AIAgentsSection } from '@/components/main/agent-use-case';
 import { FAQSection } from '@/components/main/faq';
 import { Main } from 'next/document';
+import { AiAgentsSection } from '@/components/main/ai-agents-section';
+import { FeaturesSection } from '@/components/main/features-section';
+import { SolutionsSection } from '@/components/main/solutions-section';
 export default function Home() {
   // Sample image URLs - replace with your actual images
   const leftImages = [
@@ -45,10 +48,11 @@ export default function Home() {
       <AnimatedCarousel leftImages={leftImages} rightImages={rightImages} />
       <DefinitionSection />
       <AIAgentsSection />
+      <AiAgentsSection />
+      <FeaturesSection />
+      <SolutionsSection />
       <FAQSection />
-
       <MainPage />
-
     </main>
   );
 }

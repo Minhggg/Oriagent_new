@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 // IMPORT BIỂU TƯỢNG
-import { Mail, PhoneCall } from "lucide-react";
+import { Mail, PhoneCall, PlusCircle, Workflow, Bot, ChartArea, Calendar } from "lucide-react";
 export function MainPage() {
   return (
     <section className="">
@@ -40,16 +40,16 @@ export function MainPage() {
         {/* Bullet list */}
         <ul className="text-gray-700 space-y-3 mb-10 text-base">
           <li className="flex items-start gap-2">
-            <span>🧩</span> Create a team of AI agents that handle real work
+            <PlusCircle className='w-4 h-5 flex-shrink-0' /> Create a team of AI agents that handle real work
           </li>
           <li className="flex items-start gap-2">
-            <span>⚙️</span> Automate repetitive tasks — no training needed
+            <Workflow className='w-4 h-5 flex-shrink-0' /> Automate repetitive tasks — no training needed
           </li>
           <li className="flex items-start gap-2">
-            <span>🔌</span> Plug into tools you already use
+            <Calendar className='w-4 h-5 flex-shrink-0' /> Plug into tools you already use
           </li>
           <li className="flex items-start gap-2">
-            <span>📄</span> Train AI agents on your existing docs
+            <Bot className='w-4 h-5 flex-shrink-0' /> Train AI agents on your existing docs
           </li>
         </ul>
 
