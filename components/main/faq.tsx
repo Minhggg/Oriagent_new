@@ -150,13 +150,13 @@ export function FAQSection() {
 
           {/* Title: "Frequently Asked Questions About AI Agents" */}
           <h2 className="text-5xl font-normal text-gray-900 tracking-tight mb-4">
-            Frequently Asked{' '}
+            Frequently Asked Questions About{' '}
             <span className="relative inline-block font-bold">
-              Questions
+              AI Agents
               {/* Gạch chân màu xanh nõn chuối #bef264 */}
               <span className="absolute bottom-1 left-0 w-full h-3 bg-[#bef264] -z-10 transform -rotate-1"></span>
             </span>{' '}
-            About AI Agents
+
           </h2>
 
           <p className="text-gray-500 mt-4 text-lg font-light">

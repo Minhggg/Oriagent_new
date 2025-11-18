@@ -1,104 +1,22 @@
-// components/main/AgentUseCases.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
-import {
-  Sparkles, Users, Calendar, Lightbulb, FileText, Users2,
-  Database, Settings, Play, Search, Share2, LayoutTemplate, CalendarDays,
-  // Import thêm các icon cho Tabs
-  Bot, Megaphone, DollarSign, Smartphone, Check, Phone, Mail
-} from 'lucide-react'
-
-// --- DATA ---
-// Cập nhật thêm Icon và Class màu sắc cho từng Tab để giống ảnh
-const agentTabs = [
-  {
-    id: 'custom',
-    label: 'Custom AI Agent',
-    description: 'Your fully customizable AI agent',
-    icon: Bot,
-    colorClass: 'text-lime-500' // Màu xanh lá (Robot)
-  },
-  {
-    id: 'marketing',
-    label: 'Marketing',
-    description: 'SEO • Content • Social',
-    icon: Megaphone,
-    colorClass: 'text-blue-500' // Màu xanh dương (Loa)
-  },
-  {
-    id: 'sales',
-    label: 'Sales',
-    description: 'Prospect • Enrichment • Outreach',
-    icon: DollarSign,
-    colorClass: 'text-orange-500' // Màu cam ($)
-  },
-  {
-    id: 'chat',
-    label: 'Chat',
-    description: 'Anything else you need help with',
-    icon: Smartphone, // Hoặc Tablet
-    colorClass: 'text-yellow-500' // Màu vàng (Điện thoại)
-  },
-]
-
-// ... (Giữ nguyên phần agentFeatures và rotatingContent) ...
-const agentFeatures = [
-  {
-    icon: Bot,
-    title: 'Custom AI Agent',
-    description: 'Create your own specialized AI agent with custom instructions, knowledge, and tools to handle specific tasks for your business.',
-    steps: [
-      { label: 'Define Purpose', icon: Lightbulb },
-      { label: 'Set Instructions', icon: FileText },
-      { label: 'Add Knowledge', icon: Database },
-      { label: 'Configure Tools', icon: Settings },
-      { label: 'Deploy & Use', icon: Play }
-    ],
-    cta: 'Create Agent',
-    badge: null,
-    active: true
-  },
-  {
-    icon: Users,
-    title: 'Multi-agent Teams',
-    description: 'Build teams of specialized AI agents that work together to accomplish complex tasks with collaborative problem-solving.',
-    steps: [
-      { label: 'Define Roles', icon: Users2 },
-      { label: 'Set Workflows', icon: Share2 },
-      { label: 'Create Tasks', icon: FileText },
-      { label: 'Monitor Progress', icon: Search },
-      { label: 'Review Output', icon: LayoutTemplate }
-    ],
-    badge: 'Coming soon',
-    active: false
-  },
-  {
-    icon: Calendar,
-    title: 'Agent Scheduler',
-    description: 'Schedule your AI agents to run tasks automatically at specific times, delivering results via email or your preferred channel.',
-    steps: [
-      { label: 'Define Task', icon: FileText },
-      { label: 'Set Schedule', icon: CalendarDays },
-      { label: 'Select Agent', icon: Users2 },
-      { label: 'Configure Output', icon: Settings },
-      { label: 'Activate', icon: Play }
-    ],
-    badge: 'Coming soon',
-    active: false
-  },
-]
-
-const rotatingContent = [
-  { agent: '@ContentWriter', useCase: '#PersonaPainMatrix', goal: 'SEO content' },
-  { agent: '@SalesBot', useCase: '#LeadScoring', goal: 'qualified leads' },
-  { agent: '@SupportGenie', useCase: '#AutoResponse', goal: 'happy customers' },
-]
+import { ArrowRight } from 'lucide-react'
+// Import Data từ file agent-data.ts (đảm bảo file này nằm cùng thư mục)
+import { agentTabs, tabContentData, rotatingContent } from './agent-data'
 
 export function AIAgentsSection() {
   const [activeTab, setActiveTab] = useState('custom')
   const [contentIndex, setContentIndex] = useState(0)
 
+  // Logic: Lấy data features dựa trên activeTab
+  // Nếu không tìm thấy tab (ví dụ lỗi typo) thì fallback về 'custom'
+  const activeFeatures = tabContentData[activeTab] || tabContentData['custom']
+
+  // Lấy config hiển thị (màu sắc, icon tab) hiện tại
+  const activeTabConfig = agentTabs.find(t => t.id === activeTab) || agentTabs[0]
+
+  // Hiệu ứng chạy chữ bên phải (Rotating Text)
   useEffect(() => {
     const interval = setInterval(() => {
       setContentIndex((prev) => (prev + 1) % rotatingContent.length)
@@ -109,171 +27,207 @@ export function AIAgentsSection() {
   const currentContent = rotatingContent[contentIndex]
 
   return (
-    <section className="">
-
-      <div className="mx-auto max-w-7xl border-x border-b  border-gray-200 bg-white">
+    <section className="w-full py-12 bg-white">
+      <div className="mx-auto max-w-7xl border border-gray-200 bg-white shadow-sm sm:rounded-3xl overflow-hidden">
 
         {/* --- 1. HEADER --- */}
-        <div className="px-8 py-12 lg:py-16 text-center">
+        <div className="px-6 py-12 md:px-12 text-center bg-gradient-to-b from-white to-gray-50/50">
           <div className="mb-6 flex justify-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f0fdf4] px-3 py-1 text-xs font-bold tracking-wide text-green-600 uppercase border border-[#dcfce7]">
-              <span className="h-2 w-2 rounded-full bg-green-500"></span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-50 px-3 py-1 text-xs font-bold tracking-wide text-lime-700 uppercase border border-lime-200">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-500"></span>
+              </span>
               Use Cases
             </span>
           </div>
 
-          <h1 className="mb-6 text-4xl lg:text-5xl font-bold tracking-tight text-gray-900">
+          <h1 className="mb-6 text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
             What can AI Agents{' '}
-            <span className="relative inline-block">
-              do?
-              <span className="absolute -z-10 bottom-1 left-0 h-3 w-full -rotate-1 transform bg-[#bef264]"></span>
+            <span className="relative inline-block whitespace-nowrap">
+              do for you?
+              <svg className="absolute -bottom-2 left-0 w-full h-3 text-lime-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
+              </svg>
             </span>
           </h1>
-          <p className="mx-auto max-w-2xl text-base lg:text-lg text-gray-500">
-            Discover the wide range of tasks our AI agents can handle to streamline your workflow and boost efficiency.
+          <p className="mx-auto max-w-2xl text-base md:text-lg text-gray-500">
+            Streamline your workflow with intelligent agents designed for specific business functions.
           </p>
         </div>
 
-        {/* --- 2. TABS (Đã sửa responsive) --- */}
-        {/* grid-cols-4 áp dụng cho cả mobile để luôn nằm ngang */}
-        <div className="grid grid-cols-4 divide-x divide-gray-200 border-y border-gray-200">
-          {agentTabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`group relative h-full transition-colors
-                /* Padding khác nhau cho mobile/desktop */
-                p-4 md:p-6 text-left 
-                ${activeTab === tab.id ? 'bg-[#f7fee7]' : 'bg-white hover:bg-gray-50'}
-              `}
-            >
-              {/* Highlight bar active: Chỉ hiện trên desktop hoặc nếu thích thì hiện cả mobile */}
-              {activeTab === tab.id && (
-                <div className="absolute left-0 top-0 h-1 w-full bg-[#bef264]"></div>
-              )}
+        {/* --- 2. NAVIGATION TABS (4 Nút) --- */}
+        <div className="grid grid-cols-4 border-y border-gray-200 divide-x divide-gray-200">
+          {agentTabs.map((tab) => {
+            // Gán Icon Tab ra biến để render (tránh lỗi JSX)
+            const TabIcon = tab.icon
 
-              {/* --- CONTENT CHO MOBILE (Chỉ hiện Icon ở giữa) --- */}
-              <div className="flex items-center justify-center md:hidden">
-                <tab.icon
-                  className={`h-6 w-6 ${activeTab === tab.id ? tab.colorClass : 'text-gray-400'}`}
-                  strokeWidth={2.5}
-                />
-              </div>
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`group relative h-full p-2 md:p-6 transition-all duration-300 text-left outline-none
+                    ${activeTab === tab.id ? tab.activeBg : 'bg-white hover:bg-gray-50'}
+                  `}
+              >
+                {/* Thanh line màu bên trên khi active */}
+                {activeTab === tab.id && (
+                  <div className={`absolute left-0 top-0 h-1 w-full ${tab.barColor}`}></div>
+                )}
 
-              {/* --- CONTENT CHO DESKTOP (Ẩn trên mobile) --- */}
-              <div className="hidden md:block">
-                <h3 className="mb-1 text-sm font-bold text-gray-900">
-                  {tab.label}
-                </h3>
-                <p className="text-xs text-gray-500">{tab.description}</p>
-              </div>
-            </button>
-          ))}
+                <div className="flex flex-col items-center md:items-start gap-2 md:gap-3">
+                  {/* Icon Box */}
+                  <div className="flex items-center gap-4 justify-center">
+                    <div className={`p-2 rounded-lg transition-colors ${activeTab === tab.id ? 'bg-white shadow-sm' : 'bg-gray-100 group-hover:bg-white'}`}>
+                      <TabIcon
+                        className={`h-5 w-5 md:h-6 md:w-6 ${activeTab === tab.id ? tab.color : 'text-gray-400'}`}
+                        strokeWidth={2}
+                      />
+                    </div>
+
+                    {/* Text Desktop */}
+                    <div className="hidden md:block">
+                      <h3 className={`text-sm font-bold ${activeTab === tab.id ? 'text-gray-900' : 'text-gray-600'}`}>
+                        {tab.label}
+                      </h3>
+                      <p className="text-xs text-gray-400">{tab.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Text Mobile (Rút gọn) */}
+                  <div className="block md:hidden">
+                    <h3 className={`text-[10px] font-bold text-center leading-tight ${activeTab === tab.id ? 'text-gray-900' : 'text-gray-600'}`}>
+                      {tab.label}
+                    </h3>
+                  </div>
+                </div>
+              </button>
+            )
+          })}
         </div>
 
-        {/* --- 3. CONTENT GRID --- */}
-        <div className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+        {/* --- 3. MAIN CONTENT GRID --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
 
-          {/* Left Column */}
-          <div className="space-y-8 p-6 lg:p-10">
+          {/* --- LEFT COL: DYNAMIC FEATURE CARDS --- */}
+          <div className="lg:col-span-7 p-6 md:p-10 bg-white space-y-8">
+
+            {/* Header Cột Trái */}
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Custom AI Agents</h2>
-              <button className="rounded-full border border-gray-300 px-4 py-1.5 text-xs font-medium transition-colors hover:bg-gray-50">
-                Explore Agents
+              <h2 className="text-2xl font-bold text-gray-900 animate-in fade-in slide-in-from-left-2 duration-300" key={activeTab}>
+                {activeTabConfig.label} Solutions
+              </h2>
+              <button className="hidden sm:flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-900 transition-colors">
+                View details <ArrowRight className="h-3 w-3" />
               </button>
             </div>
 
-            <div className="space-y-6">
-              {agentFeatures.map((feature, idx) => {
-                const Icon = feature.icon;
+            {/* Cards Loop */}
+            <div className="space-y-5">
+              {activeFeatures.map((feature, idx) => {
+                // FIX LỖI JSX: Gán icon ra biến MainIcon (viết hoa chữ cái đầu)
+                const MainIcon = feature.steps[0].icon
+
                 return (
-                  <div key={idx} className="flex flex-col rounded-xl bg-[#d4e8b1e3] hover:border-gray-300 py-3 px-5">
-
-                    {/* Header: Icon + Title */}
-                    <div className="mb-3 flex items-center gap-3">
-                      <div className="flex h-fit items-center justify-center rounded-md bg-purple-50 p-2 text-purple-600">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-bold text-gray-900">{feature.title}</h3>
-                        {feature.badge && (
-                          <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gray-600">
-                            {feature.badge}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mb-6 text-left text-sm leading-relaxed text-gray-500">
-                      {feature.description}
-                    </p>
-
-                    {/* Steps */}
-                    <div className="mb-6 flex flex-wrap gap-x-4 gap-y-3">
-                      {feature.steps.map((step, sIdx) => (
-                        <div key={sIdx} className="flex items-center gap-2 text-xs font-medium text-gray-500">
-                          <step.icon className="h-3.5 w-3.5 text-orange-400" />
-                          <span>{step.label}</span>
+                  <div
+                    key={`${activeTab}-${idx}`}
+                    className={`group relative overflow-hidden rounded-2xl border border-gray-100 p-6 transition-all hover:shadow-md
+                            ${activeTabConfig.bgColor} bg-opacity-30 hover:bg-opacity-50
+                        `}
+                  >
+                    <div className="relative z-10">
+                      {/* Card Top: Icon + Title */}
+                      <div className="mb-4 flex items-center gap-3">
+                        <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm ${activeTabConfig.color}`}>
+                          {/* Render icon từ biến đã gán */}
+                          <MainIcon className="h-5 w-5" />
                         </div>
-                      ))}
+                        <div>
+                          <h3 className="text-lg font-bold text-gray-900">{feature.title}</h3>
+                          {feature.badge && (
+                            <span className="inline-block rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gray-600 border border-gray-200/50 shadow-sm">
+                              {feature.badge}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <p className="mb-6 text-sm leading-relaxed text-gray-600 max-w-lg">
+                        {feature.description}
+                      </p>
+
+                      {/* Steps Pills */}
+                      <div className="mb-6 flex flex-wrap gap-2 sm:gap-3">
+                        {feature.steps.map((step, sIdx) => {
+                          // FIX LỖI JSX: Gán icon con ra biến StepIcon
+                          const StepIcon = step.icon
+                          return (
+                            <div key={sIdx} className="flex items-center gap-1.5 rounded-md bg-white/60 px-2.5 py-1.5 text-xs font-medium text-gray-600 ring-1 ring-black/5">
+                              <StepIcon className={`h-3.5 w-3.5 ${activeTabConfig.color}`} />
+                              <span>{step.label}</span>
+                            </div>
+                          )
+                        })}
+                      </div>
+
+                      {/* CTA */}
+                      <button className="flex items-center gap-2 rounded-full bg-gray-900 px-5 py-2 text-sm font-bold text-white transition-transform active:scale-95 hover:bg-gray-800">
+                        {feature.cta} <ArrowRight className="h-4 w-4" />
+                      </button>
                     </div>
 
-                    {/* Button */}
-                    {feature.cta && (
-                      <div className="mt-auto">
-                        <button className="rounded-full bg-black px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-gray-800">
-                          {feature.cta}
-                        </button>
-                      </div>
-                    )}
+                    {/* Background Decor */}
+                    <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white opacity-40 blur-2xl group-hover:opacity-60 transition-opacity"></div>
                   </div>
                 )
               })}
             </div>
-
-            {/* Footer Box */}
-            <div className="rounded-xl ">
-              <p className="mb-4 text-sm text-gray-600">
-                If you have a specific usecase in mind, we can help you build a custom solution.
-              </p>
-              <div className="flex gap-3">
-                <button className="flex-1 rounded-full bg-[#c4f20c] px-4 py-2.5 text-sm font-medium text-[#606e28] transition-colors hover:bg-[#aacc2e] flex items-center justify-center gap-2">
-                  <Smartphone className='h-4 w-4' />Book a call
-                </button>
-                <button className="flex-1 rounded-full border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 flex items-center justify-center gap-2">
-                  <Mail className='h-4 w-4' /> Email us
-                </button>
-              </div>
-            </div>
           </div>
 
-          {/* Right Column */}
-          <div className="hidden min-h-[600px] flex-col items-center justify-center bg-white p-8 lg:flex">
-            <div className="flex flex-col items-center space-y-6">
-              <span className="text-2xl font-light text-gray-400">Try using</span>
+          {/* --- RIGHT COL: ROTATING ANIMATION --- */}
+          <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-gray-200 bg-gray-50/50 flex flex-col items-center justify-center p-10 relative overflow-hidden">
 
-              <div className="animate-in fade-in slide-in-from-bottom-4 duration-500" key={`agent-${contentIndex}`}>
-                <div className="rounded-2xl bg-purple-100 px-8 py-4 text-3xl font-bold text-purple-600 shadow-sm">
-                  {currentContent.agent}
+            {/* Background Grid Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+            <div className="relative z-10 flex flex-col items-center space-y-6 text-center w-full max-w-sm">
+
+              <span className="text-xl font-light text-gray-400">Try using</span>
+
+              {/* Box 1: Agent */}
+              <div className="w-full transform transition-all duration-500 hover:scale-105">
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-500" key={`agent-${contentIndex}`}>
+                  <div className="rounded-2xl bg-white border border-purple-100 p-5 shadow-lg shadow-purple-100/50">
+                    <div className="text-xs font-bold uppercase text-purple-400 mb-1">Agent</div>
+                    <div className="text-2xl sm:text-3xl font-black text-purple-600 tracking-tight truncate">{currentContent.agent}</div>
+                  </div>
                 </div>
               </div>
 
-              <span className="text-2xl font-light text-gray-400">to</span>
+              <span className="text-xl font-light text-gray-400">to</span>
 
-              <div className="animate-in fade-in slide-in-from-bottom-4 duration-700" key={`usecase-${contentIndex}`}>
-                <div className="rounded-2xl bg-blue-100 px-8 py-4 text-3xl font-bold text-blue-600 shadow-sm">
-                  {currentContent.useCase}
+              {/* Box 2: Use Case */}
+              <div className="w-full transform transition-all duration-500 hover:scale-105 delay-75">
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-700" key={`usecase-${contentIndex}`}>
+                  <div className="rounded-2xl bg-white border border-blue-100 p-5 shadow-lg shadow-blue-100/50">
+                    <div className="text-xs font-bold uppercase text-blue-400 mb-1">Action</div>
+                    <div className="text-2xl sm:text-3xl font-black text-blue-600 tracking-tight truncate">{currentContent.useCase}</div>
+                  </div>
                 </div>
               </div>
 
-              <span className="text-2xl font-light text-gray-400">for your</span>
+              <span className="text-xl font-light text-gray-400">for your</span>
 
-              <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000" key={`goal-${contentIndex}`}>
-                <div className="rounded-2xl bg-amber-100 px-8 py-4 text-3xl font-bold text-amber-600 shadow-sm">
-                  {currentContent.goal}
+              {/* Box 3: Goal */}
+              <div className="w-full transform transition-all duration-500 hover:scale-105 delay-150">
+                <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000" key={`goal-${contentIndex}`}>
+                  <div className="rounded-2xl bg-white border border-amber-100 p-5 shadow-lg shadow-amber-100/50">
+                    <div className="text-xs font-bold uppercase text-amber-400 mb-1">Outcome</div>
+                    <div className="text-2xl sm:text-3xl font-black text-amber-600 tracking-tight truncate">{currentContent.goal}</div>
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
 

@@ -23,18 +23,19 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section className="py-16 px-4 bg-background">
+    <section className="pt-16 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
         <div className="border-l border-r border-b border-gray-200 bg-white">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-x divide-gray-200">
             {features.map((feature) => (
               <div key={feature.id} className="flex flex-col">
                 {/* Image Section */}
-                <div className="h-72 overflow-hidden bg-gray-50 flex items-center justify-center border-b border-gray-200">
+                <div className="h-72 overflow-hidden w-full bg-gray-50 flex items-center justify-center border-b border-gray-200">
                   <img
                     src={feature.illustration || "/placeholder.svg"}
                     alt={feature.title}
-                    className="w-40 h-40 object-cover"
+                    // SỬA TẠI ĐÂY: đổi object-cover thành object-contain
+                    className="w-80 h-80 object-contain"
                   />
                 </div>
 

@@ -3,10 +3,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
-/**
- * Component chứa mô hình 3D của Quả Cầu Phong Cách Vẽ Tay.
- * Sử dụng MeshLambertMaterial để tạo ánh sáng khuếch tán, phù hợp với phong cách phẳng.
- */
 function HandDrawnGlobe() {
   const globeRef = useRef<THREE.Mesh>(null);
 
