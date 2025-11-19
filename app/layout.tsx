@@ -45,7 +45,7 @@ export default function RootLayout({
           </main>
 
           {/* 3. FOOTER */}
-          <Footer />
+
 
         </ThemeProvider>
       </body>

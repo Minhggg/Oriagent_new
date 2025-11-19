@@ -71,7 +71,7 @@ export default function RotatingIcons() {
 
     const interval = setInterval(() => {
       // GIẢM TỐC ĐỘ QUAY: Đổi từ 0.5 thành 0.1
-      setRotation((prev) => (prev + 0.15) % 360)
+      setRotation((prev) => (prev + 0.2) % 360)
       setMidRotation((prev) => (prev + 0.23) % 360)
 
       // Vòng ngoài cùng quay chậm hơn
