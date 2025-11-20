@@ -183,7 +183,7 @@ export function Testimonials() {
             </p>
             <div className="flex items-center gap-3">
               <Avatar>
-                <AvatarImage src="/person16.avif" />
+                <AvatarImage src="/person17.avif" />
                 <AvatarFallback>P</AvatarFallback>
               </Avatar>
               <span className="font-medium text-sm">Per Magnus</span>
@@ -196,7 +196,7 @@ export function Testimonials() {
             </p>
             <div className="flex items-center gap-3">
               <Avatar>
-                <AvatarImage src="/person17.avif" />
+                <AvatarImage src="/person16.avif" />
                 <AvatarFallback>P</AvatarFallback>
               </Avatar>
               <span className="font-medium text-sm">Phuc</span>

@@ -76,7 +76,7 @@ export function MainNav() {
       dropdown: true,
       links: [
         { href: "/blog", label: "Blog", description: "", icon: BookOpen },
-        { href: "/use-cases", label: "Use Cases", description: "", icon: Target },
+        { href: "/use-case", label: "Use Cases", description: "", icon: Target },
         { href: "/templates", label: "Template", description: "", icon: LayoutTemplate },
         { href: "/aaa", label: "AAA", description: "", icon: Bitcoin },
         { href: "/legal", label: "Legal", description: "", icon: ShieldCheck },

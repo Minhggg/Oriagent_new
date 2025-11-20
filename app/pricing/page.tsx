@@ -2,13 +2,14 @@ import { Check, Minus } from "lucide-react"
 import { PricingPlans } from "@/components/pricing/pricing-plans"
 import { CreditPacks } from "@/components/pricing/credit-packs"
 import { Testimonials } from "@/components/pricing/testimonials"
-
+import { PricingSection } from '@/components/landing/pricing-section'
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-white">
       <PricingPlans />
       <CreditPacks />
       <Testimonials />
+      <PricingSection  />
     </div>
   )
 }
