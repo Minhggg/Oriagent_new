@@ -189,8 +189,8 @@ export default function ChangeLogPage() {
               <div className="overflow-hidden rounded-xl border bg-muted/10 shadow-sm">
                 {/* ĐIỀN LINK ẢNH VÀO src="" BÊN DƯỚI */}
                 <Image
-                  src="/Changelog1.webp" 
-                  alt="Changelog1"
+                  src="/changelog1.webp" 
+                  alt="changelog1"
                   width={1000}
                   height={600}
                   className="w-full object-cover"
@@ -223,8 +223,8 @@ export default function ChangeLogPage() {
               <div className="overflow-hidden rounded-xl border bg-muted/10 shadow-sm">
                 {/* ĐIỀN LINK ẢNH VÀO src="" BÊN DƯỚI */}
                 <Image
-                  src="/Changelog2.webp"
-                  alt="Changelog2"
+                  src="/changelog2.webp"
+                  alt="changelog2"
                   width={1000}
                   height={600}
                   className="w-full object-cover"
@@ -251,8 +251,8 @@ export default function ChangeLogPage() {
               <div className="overflow-hidden rounded-xl border bg-muted/10 shadow-sm">
                 {/* ĐIỀN LINK ẢNH VÀO src="" BÊN DƯỚI */}
                 <Image
-                  src="/Changelog3.webp"
-                  alt="Changelog3"
+                  src="/changelog3.webp"
+                  alt="changelog3"
                   width={1000}
                   height={600}
                   className="w-full object-cover"
@@ -279,7 +279,7 @@ export default function ChangeLogPage() {
               <div className="overflow-hidden rounded-xl border bg-muted/10 shadow-sm">
                 {/* ĐIỀN LINK ẢNH VÀO src="" BÊN DƯỚI */}
                 <Image
-                  src="/Changelog4.webp"
+                  src="/changelog4.webp"
                   alt="Changelog4"
                   width={1000}
                   height={600}
@@ -307,7 +307,7 @@ export default function ChangeLogPage() {
               <div className="overflow-hidden rounded-xl border bg-muted/10 shadow-sm">
                 <Image
                   src="/changelog5.webp"
-                  alt="Changelog Image"
+                  alt="changelog5"
                   width={1000}
                   height={600}
                   className="w-full object-cover"
