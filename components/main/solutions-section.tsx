@@ -40,8 +40,8 @@ export function SolutionsSection() {
             {/* Image Section - Giữ nguyên style cũ cho hợp khung */}
             <div className="h-72 w-full overflow-hidden bg-gray-50 flex items-center justify-center border-b border-gray-200 p-0 m-0">
               <img
-                src="/flow2.svg" // ĐIỀN LINK ẢNH PHẢI VÀO ĐÂY
-                alt="Cutting-Edge AI Technology"
+                src="/workflows.svg" // ĐIỀN LINK ẢNH PHẢI VÀO ĐÂY
+                alt="Cutting-Edge "
                 className="w-full h-full object-contain p-0 m-0"
               />
             </div>
