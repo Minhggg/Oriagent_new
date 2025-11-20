@@ -34,7 +34,7 @@ export default async function BlogPage() {
       {heroPost && (
         <div className="mb-16 group cursor-pointer">
           <Link href={`/blog/${heroPost.fields.slug}`}>
-            <div className="grid md:grid-cols-5 gap-8 items-center border rounded-2xl p-4 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+            <div className="grid md:grid-cols-5 gap-8 items-start border rounded-2xl p-4  hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
               <div className="md:col-span-3 relative h-[300px] md:h-[400px] rounded-xl overflow-hidden">
                 {heroPost.fields.thumbnail && (
                   <Image
@@ -46,7 +46,7 @@ export default async function BlogPage() {
                   />
                 )}
               </div>
-              <div className="md:col-span-2 flex flex-col justify-center">
+              <div className="md:col-span-2 flex flex-col justify-start pt-4 mt-4 md:mt-0">
                 <div className="text-sm text-gray-500 mb-2">
                    {formatDate(heroPost.sys.createdAt)}
                 </div>
@@ -54,7 +54,7 @@ export default async function BlogPage() {
                   {heroPost.fields.title}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 line-clamp-4 text-lg">
-                  {heroPost.fields.summary || "Click to read more..."}
+                  {heroPost.fields.excerpt || "Click to read more..."}
                 </p>
               </div>
             </div>
@@ -88,7 +88,7 @@ export default async function BlogPage() {
                     {post.fields.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 line-clamp-3 text-sm">
-                    {post.fields.summary}
+                    {post.fields.excerpt}
                   </p>
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default async function BlogPage() {
                     {post.fields.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 line-clamp-3 text-sm">
-                    {post.fields.summary}
+                    {post.fields.excerpt}
                   </p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default async function BlogPage() {
                     </h4>
                     {/* Thêm đoạn tóm tắt ngắn cho đẹp card */}
                     <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-auto">
-                      {post.fields.summary}
+                      {post.fields.excerpt}
                     </p>
                   </div>
                 </div>

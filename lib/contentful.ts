@@ -50,7 +50,7 @@ export interface BlogPost {
   fields: {
     title: string;
     slug: string;
-    summary?: string;
+    excerpt?: string;
     content: any; // Sau này sẽ render bằng @contentful/rich-text-react-renderer
     
     // Hình ảnh
