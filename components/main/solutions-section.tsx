@@ -1,15 +1,9 @@
 'use client';
 import { Bot, ArrowRight } from "lucide-react";
-export function SolutionsSection() {
-  const features = [
-    {
-      id: 1,
-      title: 'Cutting-Edge AI Technology',
-      description: 'Harness the power of next-generation AI, engineered to understand your needs with precision and deliver exceptional results.',
-      illustration: '/flow2.svg',
-    },
 
-  ];
+export function SolutionsSection() {
+  // Đã xóa biến features vì không dùng map nữa
+
   return (
     <section className="max-w-7xl mx-auto border-l border-r border-b border-border">
       {/* Top: Two column layout - Left 3/4, Right 1/4 */}
@@ -34,40 +28,34 @@ export function SolutionsSection() {
               A seamless journey from concept to execution with meticulously crafted solutions.
               Every detail refined, creating an experience that feels intuitive and magical.
             </p>
-            
           </div>
-
-          
         </div>
 
         {/* Right: Cutting-Edge AI - 1/4 width */}
         <div className="col-span-1 w-full flex flex-col">
+          
+          {/* Đã bỏ map, dùng trực tiếp div như cột trái */}
+          <div className="flex flex-col w-full h-full">
+            
+            {/* Image Section - Giữ nguyên style cũ cho hợp khung */}
+            <div className="h-72 w-full overflow-hidden bg-gray-50 flex items-center justify-center border-b border-gray-200 p-0 m-0">
+              <img
+                src="/flow2.svg" // ĐIỀN LINK ẢNH PHẢI VÀO ĐÂY
+                alt="Cutting-Edge AI Technology"
+                className="w-full h-full object-contain p-0 m-0"
+              />
+            </div>
 
-          <div className=" w-full">
-            {features.map((feature) => (
-              <div key={feature.id} className="flex flex-col w-full">
+            {/* Text Section */}
+            <div className="flex-1 flex flex-col justify-center px-6 pt-6 m-0 text-center">
+              <h3 className="text-2xl font-semibold mb-2 text-gray-900">
+                Cutting-Edge AI Technology
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Harness the power of next-generation AI, engineered to understand your needs with precision and deliver exceptional results.
+              </p>
+            </div>
 
-                {/* Image Section */}
-                <div className="h-72 w-full overflow-hidden bg-gray-50 flex items-center justify-center border-b border-gray-200 p-0 m-0">
-                  <img
-                    src="/flow2.svg"
-                    alt={feature.title}
-                    className="w-full h-full object-contain p-0 m-0"
-                  />
-                </div>
-
-                {/* Text Section */}
-                <div className="flex-1 flex flex-col justify-center px-6 pt-6 m-0 text-center">
-                  <h3 className="text-2xl font-semibold mb-2 text-gray-900">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-
-              </div>
-            ))}
           </div>
         </div>
 
@@ -98,6 +86,5 @@ export function SolutionsSection() {
       </button>
 
     </section>
-
   );
 }
