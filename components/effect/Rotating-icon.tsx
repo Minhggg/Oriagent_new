@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 // Vòng 1 (Inner-most)
 const innermostIcons = [
-  { name: "Facebook", color: "bg-blue-100", icon: "/facebook.png" },
+  { name: "Facebook", color: "bg-blue-100", icon: "/twitter.png" },
   { name: "TikTok", color: "bg-gray-100", icon: "/tiktok.png" },
   { name: "Instagram", color: "bg-orange-100", icon: "/instagram.png" }, // Đã sửa lỗi chính tả orage -> orange
   { name: "WhatsApp", color: "bg-green-100", icon: "/whatsapp.png" },
