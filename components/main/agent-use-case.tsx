@@ -188,7 +188,7 @@ export function AIAgentsSection() {
           <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-gray-200 bg-gray-50/50 flex flex-col items-center justify-center p-10 relative overflow-hidden">
 
             {/* Background Grid Pattern */}
-            <div className="bg-black absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px),black] bg-[size:24px_24px] "></div>
+            <div className=" bg-gray-800 absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px),black] bg-[size:24px_24px] "></div>
 
             <div className="relative z-10 flex flex-col items-center space-y-6 text-center w-full max-w-sm">
 

@@ -13,7 +13,7 @@ const innermostIcons = [
 
 // Vòng 2 (Middle)
 const middleIcons = [
-  { name: "Shopee", color: "bg-orange-100", icon: "/google.png" },
+  { name: "Viber", color: "bg-purple-100", icon: "/viber.png" },
   { name: "Line", color: "bg-green-100", icon: "/line.png" },
   { name: "Telegram", color: "bg-blue-100", icon: "/telegram.png" },
   { name: "Google", color: "bg-purple-100", icon: "/google.png" },
@@ -21,11 +21,11 @@ const middleIcons = [
 
 // Vòng 3 (Outer-most)
 const outermostIcons = [
-  { name: "Twitter", color: "bg-blue-100", icon: "/google.png" },
-  { name: "Youtube", color: "bg-red-100", icon: "/google.png" },
-  { name: "LinkedIn", color: "bg-blue-100", icon: "/google.png" },
-  { name: "Pinterest", color: "bg-red-100", icon: "/google.png" },
-  { name: "Viber", color: "bg-purple-100", icon: "/google.png" },
+  { name: "Twitter", color: "bg-blue-100", icon: "/twitter.png" },
+  { name: "Youtube", color: "bg-red-100", icon: "/youtube.png" },
+  { name: "LinkedIn", color: "bg-blue-100", icon: "/linkedin2.png" },
+  { name: "Notioni", color: "bg-gray-100", icon: "/notion.png" },
+  { name: "OpenAI", color: "bg-purple-100", icon: "/chat-gpt.png" },
 ]
 
 
@@ -233,7 +233,7 @@ export default function RotatingIcons() {
                 }}
               >
                 {/* ĐÃ SỬA: Dùng dynamic class ${social.color} thay vì bg-white */}
-                <div className={`${ICON_SIZE_CLASSES} rounded-full sm:rounded-full ${social.color} shadow-sm flex items-center justify-center hover:scale-110 transition-transform`}>
+                <div className={`${ICON_SIZE_CLASSES} rounded-full sm:rounded-full ${social.color} shadow-sm  flex items-center justify-center hover:scale-110 transition-transform`}>
                   <img src={social.icon} alt={social.name} className={`${ICON_IMAGE_SIZE_CLASSES} object-contain`} />
                 </div>
               </div>

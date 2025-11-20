@@ -45,21 +45,21 @@ export function PricingSection() {
       name: 'Charlie',
       rating: 5,
       text: 'The integration capabilities with my existing tools made adoption seamless. Every update brings new valuable features.',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop'
+      image: 'person1.png'
     },
     {
       id: 2,
       name: 'Sarah',
       rating: 5,
       text: 'This platform has transformed how we handle our workflows. The AI agents are incredibly smart and responsive.',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop'
+      image: 'person2.png'
     },
     {
       id: 3,
       name: 'Marcus',
       rating: 5,
       text: 'Outstanding support team and continuous improvements. Worth every penny for the time savings alone.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop'
+      image: 'person3.png'
     }
   ];
 
@@ -221,7 +221,7 @@ export function PricingSection() {
                       <p className="text-sm text-gray-700 mb-4 italic">"{currentTestimonial.text}"</p>
                       <div className="flex items-center gap-3">
                         {/* Nếu muốn hiển thị ảnh, bỏ comment dòng dưới */}
-                        {/* <img src={currentTestimonial.image} alt={currentTestimonial.name} className="w-8 h-8 rounded-full object-cover" /> */}
+                        <img src={currentTestimonial.image} alt={currentTestimonial.name} className="w-8 h-8 rounded-full object-cover" /> 
                         <div className="flex flex-col">
                           <span className="font-semibold text-sm text-gray-900">{currentTestimonial.name}</span>
                           <div className="flex text-yellow-400">

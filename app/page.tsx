@@ -3,6 +3,7 @@ import { MainPage } from '@/components/main/page1'
 import { AnimatedCarousel } from '@/components/main/animated-carousel';
 import { DefinitionSection } from '@/components/main/definition';
 import { AIAgentsSection } from '@/components/main/agent-use-case';
+import { Testimonials } from "@/components/pricing/testimonials"
 import { FAQSection } from '@/components/main/faq';
 import { Main } from 'next/document';
 import { AiAgentsSection } from '@/components/main/ai-agents-section';
@@ -51,6 +52,7 @@ export default function Home() {
       <AiAgentsSection />
       <FeaturesSection />
       <SolutionsSection />
+      
       <FAQSection />
       <MainPage />
     </main>

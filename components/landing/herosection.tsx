@@ -53,24 +53,24 @@ export function HeroSection() {
         {/* Social Proof */}
         <div className="flex items-center justify-center gap-3">
           <div className="flex -space-x-2">
-            <Avatar className="w-10 h-10 border-2 border-white">
-              <AvatarImage src="/diverse-group-avatars.png" alt="User" />
+            <Avatar className="w-8 h-8 border-2 border-white">
+              <AvatarImage src="/person1.png" alt="User" />
               <AvatarFallback>U1</AvatarFallback>
             </Avatar>
-            <Avatar className="w-10 h-10 border-2 border-white">
-              <AvatarImage src="/diverse-group-avatars.png" alt="User" />
+            <Avatar className="w-8 h-8 border-2 border-white">
+              <AvatarImage src="/person2.png" alt="User" />
               <AvatarFallback>U2</AvatarFallback>
             </Avatar>
-            <Avatar className="w-10 h-10 border-2 border-white">
-              <AvatarImage src="/diverse-group-avatars.png" alt="User" />
+            <Avatar className="w-8 h-8 border-2 border-white">
+              <AvatarImage src="/person3.png" alt="User" />
               <AvatarFallback>U3</AvatarFallback>
             </Avatar>
-            <Avatar className="w-10 h-10 border-2 border-white">
-              <AvatarImage src="/diverse-group-avatars.png" alt="User" />
+            <Avatar className="w-8 h-8 border-2 border-white">
+              <AvatarImage src="/person4.png" alt="User" />
               <AvatarFallback>U4</AvatarFallback>
             </Avatar>
-            <Avatar className="w-10 h-10 border-2 border-white">
-              <AvatarImage src="/diverse-group-avatars.png" alt="User" />
+            <Avatar className="w-8 h-8 border-2 border-white">
+              <AvatarImage src="/person5.png" alt="User" />
               <AvatarFallback>U5</AvatarFallback>
             </Avatar>
           </div>
