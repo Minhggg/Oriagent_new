@@ -88,7 +88,7 @@ export default async function BlogPage() {
                     {post.fields.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 line-clamp-3 text-sm">
-                    {post.fields.summary}
+                    {post.fields.excerpt}
                   </p>
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default async function BlogPage() {
                     {post.fields.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 line-clamp-3 text-sm">
-                    {post.fields.summary}
+                    {post.fields.excerpt}
                   </p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default async function BlogPage() {
                     </h4>
                     {/* Thêm đoạn tóm tắt ngắn cho đẹp card */}
                     <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-auto">
-                      {post.fields.summary}
+                      {post.fields.excerpt}
                     </p>
                   </div>
                 </div>
