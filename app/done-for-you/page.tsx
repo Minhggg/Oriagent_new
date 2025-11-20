@@ -1,6 +1,6 @@
 import { HeroSection } from '@/components/landing/herosection'
 import { FeaturesSection } from '@/components/landing/features-section'
-import { FeatureItem } from '@/components/landing/features-item'
+
 import { ToolkitSection } from '@/components/landing/toolkit-section'
 import { ComparisonSection } from '@/components/landing/comparison-section'
 import { PricingSection } from '@/components/landing/pricing-section'
@@ -13,7 +13,7 @@ export default function DoneForYouPage() {
     <main >
       <HeroSection />
       <FeaturesSection />
-      <FeatureItem />
+      
       <AIAgentsSection />
       <ToolkitSection />
       <Testimonials />
