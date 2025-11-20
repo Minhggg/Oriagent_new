@@ -11,7 +11,7 @@ export function SolutionsSection() {
 
         {/* Left: Comprehensive Solutions - 3/4 width */}
         <div className="col-span-3 p-12 flex flex-col items-center text-center ">
-          <div className="col-span-3 p-12 flex flex-col items-center text-center rounded-2xl border border-border  shadow-md">
+          <div className="col-span-3 p-12 flex flex-col items-center text-center rounded-2xl border  border-slate-200 hover:border-slate-300 hover:shadow-xl  shadow-md">
             {/* Image Area */}
             <div className="mb-8  w-full flex items-center justify-center h-64 border-b border-border pb-8">
               <img

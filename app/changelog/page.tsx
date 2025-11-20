@@ -47,10 +47,10 @@ export default function ChangeLogPage() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle className="text-center">Share site</DialogTitle>
+                <DialogTitle className="text-center text-xl">Share site</DialogTitle>
               </DialogHeader>
-              <div className="flex flex-col gap-4 py-4">
-                <div className="rounded-lg border bg-muted/20 p-4">
+              <div className="flex flex-col gap-4 pb-4 pt-3 ">
+                <div className="rounded-xl border bg-muted/20 p-4">
                   
                   <div className="aspect-[2/1] relative bg-black rounded-xl overflow-hidden mb-2">
                     <Image
@@ -62,7 +62,7 @@ export default function ChangeLogPage() {
                     />
                   </div>
                   
-                  <p className="text-lg font-bold underline underline-offset-2">Change log</p>
+                  
                 </div>
 
                 <div className="flex items-center gap-2">

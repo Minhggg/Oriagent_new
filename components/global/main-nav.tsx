@@ -1,6 +1,7 @@
 // components/main-nav.tsx
 'use client';
 
+import { SignInModal } from "@/components/sign-in-modal"
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
@@ -16,8 +17,9 @@ import {
   Menu,
   X,
   User,
-  FileText, // Icon cho Blog/Change log
-  CreditCard // Icon cho Pricing
+  Sun, // [FIX] Added missing import
+  FileText, 
+  CreditCard 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,7 +34,7 @@ interface DropdownLink {
   href: string;
   label: string;
   description: string;
-  icon: any;
+  icon: React.ElementType; // [FIX] Better typing than 'any'
 }
 
 interface NavItemWithDropdown {
@@ -51,6 +53,8 @@ type NavItem = NavItemWithDropdown | NavItemWithLink;
 
 export function MainNav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // [FIX] Added closing parenthesis and semicolon
+  const [showSignIn, setShowSignIn] = useState(false); 
 
   // Khóa cuộn trang khi mở menu
   useEffect(() => {
@@ -61,7 +65,7 @@ export function MainNav() {
     }
   }, [isMobileMenuOpen]);
 
-  // Dữ liệu menu khớp hoàn toàn với ảnh
+  // Dữ liệu menu
   const navItems: NavItem[] = [
     {
       label: "Solutions",
@@ -82,7 +86,6 @@ export function MainNav() {
         { href: "/legal", label: "Legal", description: "", icon: ShieldCheck },
       ]
     },
-    // Change log và Pricing là link đơn, không có dropdown
     { label: "Change log", dropdown: false, href: "/changelog" },
     { label: "Pricing", dropdown: false, href: "/pricing" },
   ];
@@ -137,11 +140,20 @@ export function MainNav() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Monitor className="h-5 w-5 text-gray-600 cursor-pointer hover:text-black transition-colors" />
-            <Button variant="outline" size="sm" className="rounded-full text-sm font-medium h-9 px-4">
+            {/* <Monitor className="h-5 w-5 text-gray-600 cursor-pointer hover:text-black transition-colors" /> */}
+            <button className="text-zinc-900 hover:text-black transition-colors"> {/* Changed hover to black for visibility */}
+              <Sun className="w-5 h-5" />
+            </button>
+            <Button
+              variant="outline"
+              className="bg-transparent border-zinc-400 text-zinc-800 hover:bg-zinc-900 hover:text-white rounded-full px-6 h-9 text-sm font-normal" // Adjusted colors slightly for visibility
+              onClick={() => setShowSignIn(true)}
+            >
               Sign In
             </Button>
           </div>
+
+          <SignInModal open={showSignIn} onOpenChange={setShowSignIn} />
 
           {/* Mobile Menu Trigger */}
           <button
@@ -166,7 +178,7 @@ export function MainNav() {
           {/* 2. BẢNG MENU (Drawer) */}
           <div className="relative flex flex-col w-[85%] max-w-[350px] h-full bg-white shadow-2xl animate-in slide-in-from-right duration-300">
 
-            {/* Nút Đóng (X) có vòng tròn như ảnh */}
+            {/* Nút Đóng (X) */}
             <div className="flex justify-end p-5 pt-6">
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -184,7 +196,6 @@ export function MainNav() {
                 {navItems.map((item) => (
                   <div key={item.label}>
                     {item.dropdown ? (
-                      // Render Group (Solutions, Content)
                       <div className="space-y-4">
                         <h3 className="text-sm font-medium text-gray-500">
                           {item.label}
@@ -204,7 +215,6 @@ export function MainNav() {
                         </div>
                       </div>
                     ) : (
-                      // Render Link lẻ (Change log, Pricing) - Nằm ngang hàng các group
                       <div className="pt-2">
                         <Link
                           href={item.href}
@@ -233,6 +243,11 @@ export function MainNav() {
                 <Button
                   className="w-full rounded-full border border-gray-200 bg-white text-black hover:bg-gray-50 h-12 text-base font-normal shadow-sm flex items-center justify-center gap-2"
                   variant="outline"
+                  // [FIX] Added onClick handler to actually open the modal
+                  onClick={() => {
+                    setIsMobileMenuOpen(false); // Close menu first
+                    setShowSignIn(true); // Open modal
+                  }}
                 >
                   <User className="h-4 w-4" strokeWidth={1.5} />
                   Sign In
