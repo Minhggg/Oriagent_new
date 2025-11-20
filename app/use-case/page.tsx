@@ -54,7 +54,7 @@ export default async function BlogPage() {
                   {heroPost.fields.title}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 line-clamp-4 text-lg">
-                  {heroPost.fields.summary || "Click to read more..."}
+                  {heroPost.fields.excerpt || "Click to read more..."}
                 </p>
               </div>
             </div>
