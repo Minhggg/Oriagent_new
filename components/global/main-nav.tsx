@@ -142,7 +142,7 @@ export function MainNav() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-zinc-900 hover:text-black transition-colors">
+            <button className="text-black hover:text-yellow-500 transition-colors">
               <Sun className="w-5 h-5" />
             </button>
             <Button
