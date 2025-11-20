@@ -17,9 +17,10 @@ import {
   Menu,
   X,
   User,
-  Sun, // [FIX] Added missing import
-  FileText, 
-  CreditCard 
+  Sun,
+  FileText,
+  CreditCard,
+  LucideIcon // [FIX] Import thêm type này
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -34,7 +35,7 @@ interface DropdownLink {
   href: string;
   label: string;
   description: string;
-  icon: React.ElementType; // [FIX] Better typing than 'any'
+  icon: LucideIcon; // [FIX] Dùng LucideIcon thay vì React.ElementType để nhận đúng props
 }
 
 interface NavItemWithDropdown {
@@ -53,8 +54,7 @@ type NavItem = NavItemWithDropdown | NavItemWithLink;
 
 export function MainNav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // [FIX] Added closing parenthesis and semicolon
-  const [showSignIn, setShowSignIn] = useState(false); 
+  const [showSignIn, setShowSignIn] = useState(false);
 
   // Khóa cuộn trang khi mở menu
   useEffect(() => {
@@ -118,7 +118,9 @@ export function MainNav() {
                         {item.links.map((link) => (
                           <DropdownMenuItem key={link.href} asChild>
                             <Link href={link.href} className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer outline-none select-none">
-                              <div className="mt-0.5 text-gray-500"><link.icon className="h-5 w-5" strokeWidth={1.5} /></div>
+                              <div className="mt-0.5 text-gray-500">
+                                <link.icon className="h-5 w-5" strokeWidth={1.5} />
+                              </div>
                               <div>
                                 <div className="text-sm font-semibold text-gray-900">{link.label}</div>
                                 <p className="text-xs text-gray-500 mt-0.5 font-normal leading-snug">{link.description || link.label}</p>
@@ -140,13 +142,12 @@ export function MainNav() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* <Monitor className="h-5 w-5 text-gray-600 cursor-pointer hover:text-black transition-colors" /> */}
-            <button className="text-zinc-900 hover:text-black transition-colors"> {/* Changed hover to black for visibility */}
+            <button className="text-zinc-900 hover:text-black transition-colors">
               <Sun className="w-5 h-5" />
             </button>
             <Button
               variant="outline"
-              className="bg-transparent border-zinc-400 text-zinc-800 hover:bg-zinc-900 hover:text-white rounded-full px-6 h-9 text-sm font-normal" // Adjusted colors slightly for visibility
+              className="bg-transparent border-zinc-400 text-zinc-800 hover:bg-zinc-900 hover:text-white rounded-full px-6 h-9 text-sm font-normal"
               onClick={() => setShowSignIn(true)}
             >
               Sign In
@@ -243,7 +244,6 @@ export function MainNav() {
                 <Button
                   className="w-full rounded-full border border-gray-200 bg-white text-black hover:bg-gray-50 h-12 text-base font-normal shadow-sm flex items-center justify-center gap-2"
                   variant="outline"
-                  // [FIX] Added onClick handler to actually open the modal
                   onClick={() => {
                     setIsMobileMenuOpen(false); // Close menu first
                     setShowSignIn(true); // Open modal
