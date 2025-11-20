@@ -50,7 +50,7 @@ export function SolutionsSection() {
                 {/* Image Section */}
                 <div className="h-72 w-full overflow-hidden bg-gray-50 flex items-center justify-center border-b border-gray-200 p-0 m-0">
                   <img
-                    src={feature.illustration || "/placeholder.svg"}
+                    src="/flow2.svg"
                     alt={feature.title}
                     className="w-full h-full object-contain p-0 m-0"
                   />
