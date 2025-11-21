@@ -28,7 +28,8 @@ export default function ChangeLogPage() {
   return (
     <div className="min-h-screen bg-white text-[#37352f]">
       {/* Top Navigation Bar */}
-      <header className="sticky top-15 z-50 flex h-10 items-center justify-between bg-white px-3 backdrop-blur-sm transition-all">
+      <header className="sticky top-0 z-30 flex h-10 items-center justify-between bg-white px-3 backdrop-blur-sm transition-all">
+
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
         </div>
 

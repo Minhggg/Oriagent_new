@@ -215,9 +215,7 @@ export function MainNav() {
                 <DropdownMenuItem onClick={() => setTheme('dark')} className={`cursor-pointer ${theme === 'dark' ? 'bg-gray-100 dark:bg-zinc-700' : ''} dark:text-zinc-100`}>
                   <Moon className="mr-2 h-4 w-4" /> Dark
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme('system')} className={`cursor-pointer ${theme === 'system' ? 'bg-gray-100 dark:bg-zinc-700' : ''} dark:text-zinc-100`}>
-                  <Laptop className="mr-2 h-4 w-4" /> System
-                </DropdownMenuItem>
+                
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -244,10 +242,11 @@ export function MainNav() {
         </div>
       </div>
 
+      
       {/* --- MOBILE MENU OVERLAY (Slide từ phải sang) --- */}
       {isMobileMenuOpen && (
         // Sử dụng z-index cao hơn
-        <div className="fixed inset-0 z-[100] flex justify-end">
+        <div className="fixed inset-0 z-[100] flex justify-end min-h-full ">
 
           {/* 1. LỚP NỀN TỐI (Overlay) */}
           <div
@@ -270,8 +269,8 @@ export function MainNav() {
             </div>
 
             {/* Nội dung cuộn */}
-            <div className="flex-1 overflow-y-auto px-8 pb-6">
-              <div className="space-y-8">
+            <div className=" px-8 pb-2 border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 ">
+              <div className="space-y-4">
 
                 {/* === PHẦN MENU CHÍNH === */}
                 {navItems.map((item) => (
@@ -299,7 +298,7 @@ export function MainNav() {
                         </div>
                       </div>
                     ) : (
-                      <div className="pt-2">
+                      <div className="pt-0 mb-3">
                         <Link
                           href={item.href}
                           onClick={() => setIsMobileMenuOpen(false)}
@@ -314,73 +313,26 @@ export function MainNav() {
                 ))}
               </div>
             </div>
-
             {/* === FOOTER (Theme Toggle + Sign In) === */}
-            {/* Cập nhật border, nền và shadow */}
-            <div className="p-6 px-8 border-t border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-              <div className="space-y-6">
-                
-                {/* THÊM Theme Toggle cho Mobile */}
-                <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-zinc-400">Giao Diện</h4>
-                    <div className="grid grid-cols-3 gap-3">
-                        {/* Light Mode */}
-                        <button
-                            onClick={() => handleThemeChange('light')}
-                            // Cập nhật màu border, nền, text cho Dark Mode và trạng thái active
-                            className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-colors ${
-                                theme === 'light'
-                                ? 'border-black bg-gray-50 dark:border-white dark:bg-zinc-800'
-                                : 'border-gray-200 hover:bg-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-800'
-                            }`}
-                        >
-                            <Sun className={`h-5 w-5 ${theme === 'light' ? 'text-black dark:text-white' : 'text-gray-500 dark:text-zinc-400'}`} strokeWidth={1.5} />
-                            <span className={`mt-1 text-xs font-medium ${theme === 'light' ? 'text-black dark:text-white' : 'text-gray-600 dark:text-zinc-400'}`}>Light</span>
-                        </button>
-                        
-                        {/* Dark Mode */}
-                        <button
-                            onClick={() => handleThemeChange('dark')}
-                            className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-colors ${
-                                theme === 'dark'
-                                ? 'border-black bg-gray-50 dark:border-white dark:bg-zinc-800'
-                                : 'border-gray-200 hover:bg-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-800'
-                            }`}
-                        >
-                            <Moon className={`h-5 w-5 ${theme === 'dark' ? 'text-black dark:text-white' : 'text-gray-500 dark:text-zinc-400'}`} strokeWidth={1.5} />
-                            <span className={`mt-1 text-xs font-medium ${theme === 'dark' ? 'text-black dark:text-white' : 'text-gray-600 dark:text-zinc-400'}`}>Dark</span>
-                        </button>
+            <div className="mt-auto px-8 pb-8 pt-4 border-t border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
 
-                        {/* System Mode */}
-                        <button
-                            onClick={() => handleThemeChange('system')}
-                            className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-colors ${
-                                theme === 'system'
-                                ? 'border-black bg-gray-50 dark:border-white dark:bg-zinc-800'
-                                : 'border-gray-200 hover:bg-gray-50 dark:border-zinc-700 dark:hover:bg-zinc-800'
-                            }`}
-                        >
-                            <Laptop className={`h-5 w-5 ${theme === 'system' ? 'text-black dark:text-white' : 'text-gray-500 dark:text-zinc-400'}`} strokeWidth={1.5} />
-                            <span className={`mt-1 text-xs font-medium ${theme === 'system' ? 'text-black dark:text-white' : 'text-gray-600 dark:text-zinc-400'}`}>System</span>
-                        </button>
-                    </div>
-                </div>
-
-                {/* Sign In Button - Cập nhật màu border, nền và text */}
-                <Button
-                  className="w-full rounded-full border border-gray-200 bg-white text-black hover:bg-gray-50 h-12 text-base font-normal shadow-sm flex items-center justify-center gap-2 
-                             dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
-                  variant="outline"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false); // Đóng menu trước
-                    setShowSignIn(true); // Mở modal
-                  }}
-                >
-                  <User className="h-4 w-4" strokeWidth={1.5} />
-                  Sign In
-                </Button>
-              </div>
+              {/* Sign In Button - Cập nhật màu border, nền và text */}
+              <Button
+                className="w-full rounded-full border border-gray-200 bg-white text-black hover:bg-gray-50 h-12 text-base font-normal shadow-sm flex items-center justify-center gap-2 
+                            dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+                variant="outline"
+                onClick={() => {
+                  setIsMobileMenuOpen(false); // Đóng menu trước
+                  setShowSignIn(true); // Mở modal
+                }}
+              >
+                <User className="h-4 w-4" strokeWidth={1.5} />
+                Sign In
+              </Button>
+              
             </div>
+
+            
 
           </div>
         </div>
