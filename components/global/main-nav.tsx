@@ -88,11 +88,14 @@ export function MainNav() {
   // Khóa cuộn trang khi mở menu mobile
   useEffect(() => {
     if (isMobileMenuOpen) {
+      // Khóa cuộn trang chính
       document.body.style.overflow = 'hidden';
     } else {
+      // Mở lại cuộn khi đóng menu
       document.body.style.overflow = 'unset';
     }
-    // Dọn dẹp khi component unmount
+
+    // Cleanup function để đảm bảo mở lại cuộn khi component unmount
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -245,53 +248,53 @@ export function MainNav() {
       
       {/* --- MOBILE MENU OVERLAY (Slide từ phải sang) --- */}
       {isMobileMenuOpen && (
-        // Sử dụng z-index cao hơn
-        <div className="fixed inset-0 z-[100] flex justify-end min-h-full ">
+        // WRAPPER CHÍNH: z-index cực cao để đè lên tất cả Header/Banner
+        <div className="fixed inset-0 z-[9999] flex justify-end h-[100dvh]">
 
-          {/* 1. LỚP NỀN TỐI (Overlay) */}
+          {/* 1. LỚP NỀN TỐI (Overlay) 
+              - bg-black/60: Đậm hơn chút để che nội dung dưới
+              - backdrop-blur: Làm mờ nội dung dưới
+          */}
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-[2px] transition-opacity"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
-          {/* 2. BẢNG MENU (Drawer) - Cập nhật nền và shadow */}
-          <div className="relative flex flex-col w-[85%] max-w-[350px] min-h-full bg-white dark:bg-zinc-900 shadow-2xl animate-in slide-in-from-right duration-300">
+          {/* 2. BẢNG MENU (Drawer) 
+              - h-[100dvh]: Chiều cao full màn hình thiết bị (tránh lỗi thanh địa chỉ trên iOS/Android)
+              - overflow-y-auto: Chỉ cho phép cuộn nội dung TRONG menu này
+          */}
+          <div className="relative flex flex-col w-[85%] max-w-[350px] h-[100dvh] bg-white dark:bg-zinc-900 shadow-2xl animate-in slide-in-from-right duration-300 overflow-y-auto">
 
-            {/* Nút Đóng (X) */}
-            <div className="flex justify-end p-5 pt-6">
+            {/* Nút Đóng (X) - Giữ cố định hoặc cuộn theo tùy ý, ở đây cho cuộn theo */}
+            <div className="flex justify-end p-5 pt-6 shrink-0">
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                // Cập nhật border, hover bg, và text cho Dark Mode
                 className="group rounded-full border border-gray-300 dark:border-zinc-700 p-1.5 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
               >
-                <X className="h-5 w-5 text-gray-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white" strokeWidth={1.5} />
+                <X className="h-6 w-6 text-gray-600 dark:text-zinc-400 group-hover:text-black dark:group-hover:text-white" strokeWidth={1.5} />
               </button>
             </div>
 
-            {/* Nội dung cuộn */}
-            <div className=" px-8 pb-2 border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 ">
-              <div className="space-y-5">
-
-                {/* === PHẦN MENU CHÍNH === */}
+            {/* Nội dung Menu */}
+            <div className="flex-1 px-8 pb-2">
+              <div className="space-y-6">
                 {navItems.map((item) => (
                   <div key={item.label}>
                     {item.dropdown ? (
                       <div className="space-y-4">
-                        {/* Title - Cập nhật màu text */}
-                        <h3 className="text-sm font-medium text-gray-500 dark:text-zinc-400">
+                        <h3 className="text-sm font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                           {item.label}
                         </h3>
-                        <div className="space-y-5 pl-2">
+                        <div className="space-y-5 pl-2  dark:border-zinc-800 ml-1">
                           {item.links.map((link) => (
                             <Link
                               key={link.label}
                               href={link.href}
                               onClick={() => setIsMobileMenuOpen(false)}
-                              // Cập nhật màu text và hover
-                              className="flex items-center gap-4 text-[16px] font-normal text-gray-800 hover:text-black dark:text-zinc-200 dark:hover:text-white"
+                              className="flex items-center gap-4 text-[16px] font-normal text-gray-800 hover:text-primary dark:text-zinc-200 dark:hover:text-white transition-colors"
                             >
-                              {/* Icon - Cập nhật màu icon */}
-                              <link.icon className="h-5 w-5 text-gray-900 dark:text-zinc-300" strokeWidth={1.5} />
+                              <link.icon className="h-5 w-5 text-gray-500 dark:text-zinc-400" strokeWidth={1.5} />
                               {link.label}
                             </Link>
                           ))}
@@ -302,8 +305,7 @@ export function MainNav() {
                         <Link
                           href={item.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          // Cập nhật màu text và hover
-                          className="block text-[16px] font-normal text-gray-800 hover:text-black dark:text-zinc-200 dark:hover:text-white"
+                          className="block text-lg font-medium text-gray-900 hover:text-black dark:text-white dark:hover:text-gray-200"
                         >
                           {item.label}
                         </Link>
@@ -313,26 +315,25 @@ export function MainNav() {
                 ))}
               </div>
             </div>
-            {/* === FOOTER (Theme Toggle + Sign In) === */}
-            <div className="mt-auto px-8 pb-8 pt-4 border-t border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
 
-              {/* Sign In Button - Cập nhật màu border, nền và text */}
+            {/* === FOOTER (Theme Toggle + Sign In) === 
+                Dùng mt-auto để đẩy xuống đáy nếu nội dung ngắn, 
+                nhưng vẫn nằm trong dòng chảy flex nếu nội dung dài 
+            */}
+            <div className="mt-auto shrink-0 px-8 pb-8 pt-6 border-t border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
               <Button
                 className="w-full rounded-full border border-gray-200 bg-white text-black hover:bg-gray-50 h-12 text-base font-normal shadow-sm flex items-center justify-center gap-2 
-                            dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+                          dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700 transition-all"
                 variant="outline"
                 onClick={() => {
-                  setIsMobileMenuOpen(false); // Đóng menu trước
-                  setShowSignIn(true); // Mở modal
+                  setIsMobileMenuOpen(false);
+                  setShowSignIn(true);
                 }}
               >
                 <User className="h-4 w-4" strokeWidth={1.5} />
                 Sign In
               </Button>
-              
             </div>
-
-            
 
           </div>
         </div>
