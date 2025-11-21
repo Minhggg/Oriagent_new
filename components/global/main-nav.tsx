@@ -255,7 +255,7 @@ export function MainNav() {
           />
 
           {/* 2. BẢNG MENU (Drawer) - Cập nhật nền và shadow */}
-          <div className="relative flex flex-col w-[85%] max-w-[350px] h-full bg-white dark:bg-zinc-900 shadow-2xl animate-in slide-in-from-right duration-300">
+          <div className="relative flex flex-col w-[85%] max-w-[350px] min-h-full bg-white dark:bg-zinc-900 shadow-2xl animate-in slide-in-from-right duration-300">
 
             {/* Nút Đóng (X) */}
             <div className="flex justify-end p-5 pt-6">
@@ -270,7 +270,7 @@ export function MainNav() {
 
             {/* Nội dung cuộn */}
             <div className=" px-8 pb-2 border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 ">
-              <div className="space-y-4">
+              <div className="space-y-5">
 
                 {/* === PHẦN MENU CHÍNH === */}
                 {navItems.map((item) => (
