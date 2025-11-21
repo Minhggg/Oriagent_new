@@ -202,25 +202,8 @@ export function MainNav() {
           {/* Desktop Actions (Bao gồm Theme Toggle) */}
           <div className="hidden md:flex items-center space-x-4">
             {/* Theme Toggle cho Desktop */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                {/* Sử dụng Icon hiện tại để làm nút toggle */}
-                <Button variant="ghost" size="icon" className="text-black hover:text-yellow-500 dark:text-white dark:hover:text-yellow-400 transition-colors">
-                  <ThemeIcon className="h-5 w-5" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-40 dark:bg-zinc-800 dark:border-zinc-700">
-                <DropdownMenuLabel className="dark:text-zinc-400">Chọn Giao Diện</DropdownMenuLabel>
-                <DropdownMenuSeparator className="dark:bg-zinc-700" />
-                <DropdownMenuItem onClick={() => setTheme('light')} className={`cursor-pointer ${theme === 'light' ? 'bg-gray-100 dark:bg-zinc-700' : ''} dark:text-zinc-100`}>
-                  <Sun className="mr-2 h-4 w-4" /> Light
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme('dark')} className={`cursor-pointer ${theme === 'dark' ? 'bg-gray-100 dark:bg-zinc-700' : ''} dark:text-zinc-100`}>
-                  <Moon className="mr-2 h-4 w-4" /> Dark
-                </DropdownMenuItem>
-                
-              </DropdownMenuContent>
-            </DropdownMenu>
+            
+
 
             {/* Nút Sign In */}
             <Button
