@@ -36,18 +36,37 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Button size="lg" className="bg-black text-white hover:bg-gray-900">
-            <span className="mr-2">
-              <PhoneCall />
-            </span>
-            Book a call
-          </Button>
-          <Button size="lg" variant="outline">
-            <span className="mr-2">
-              <Mail />
-            </span>
-            Email us
-          </Button>
+          <a
+            href="https://www.arrowhitech.com/contact-us/"
+            target="_blank"
+            rel="noopener noreferrer"
+            
+          >
+            <Button size="lg" className="bg-black text-white hover:bg-gray-900">
+              <span className="mr-2">
+                <PhoneCall />
+              </span>
+              Book a call
+            </Button>
+
+          </a>
+          
+          <a
+            href="https://www.arrowhitech.com/contact-us/"
+            target="_blank"
+            rel="noopener noreferrer"
+            
+          >
+            <Button size="lg" variant="outline">
+              <span className="mr-2">
+                <Mail />
+              </span>
+              Email us
+            </Button>
+
+          </a>
+
+
         </div>
 
         {/* Social Proof */}

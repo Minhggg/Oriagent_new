@@ -166,9 +166,18 @@ export function AIAgentsSection() {
               <h2 className="text-2xl font-bold text-gray-900 animate-in fade-in slide-in-from-left-2 duration-300" key={activeTab}>
                 {activeTabConfig.label} Solutions
               </h2>
-              <button className="hidden sm:flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-900 transition-colors">
-                View details <ArrowRight className="h-3 w-3" />
-              </button>
+              <a
+                  href="https://app.oriagent.com/apps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  
+                >
+                  <button className="hidden sm:flex items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-900 transition-colors">
+                    View details <ArrowRight className="h-3 w-3" />
+                  </button>
+                </a>
+               
+              
             </div>
 
             <div className="space-y-5">
@@ -209,9 +218,17 @@ export function AIAgentsSection() {
                           )
                         })}
                       </div>
-                      <button className="flex items-center gap-2 rounded-full bg-gray-900 px-5 py-2 text-sm font-bold text-white transition-transform active:scale-95 hover:bg-gray-800">
-                        {feature.cta} <ArrowRight className="h-4 w-4" />
-                      </button>
+                        <a
+                          href="https://app.oriagent.com/apps"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          
+                        >
+                          <button className="flex items-center gap-2 rounded-full bg-gray-900 px-5 py-2 text-sm font-bold text-white transition-transform active:scale-95 hover:bg-gray-800">
+                            {feature.cta} <ArrowRight className="h-4 w-4" />
+                          </button>
+                        </a>
+                      
                     </div>
                     <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white opacity-40 blur-2xl group-hover:opacity-60 transition-opacity"></div>
                   </div>

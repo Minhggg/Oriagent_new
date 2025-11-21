@@ -119,10 +119,21 @@ export default function AIAgentsSection() {
             <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-100 dark:border-slate-800">
               <p className="text-xs text-muted-foreground mb-3">Need a custom {activeTab} workflow? We can help you build it.</p>
               <div className="flex flex-wrap gap-2">
-                <Button size="sm" className="bg-green-500 hover:bg-green-600 flex-1 text-white font-semibold">
-                  Book a call
-                </Button>
-                <Button variant="outline" size="sm" className="flex-1">Email us</Button>
+                <a
+                  href="https://www.arrowhitech.com/contact-us/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <Button
+                    size="sm"
+                    className="bg-green-500 hover:bg-green-600 w-full text-white font-semibold"
+                  >
+                    Book a call
+                  </Button>
+                  <Button variant="outline" size="sm" className="flex-1">Email us</Button>
+                </a>
+                
               </div>
             </div>
           </div>

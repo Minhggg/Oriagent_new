@@ -56,10 +56,19 @@ export function MainPage() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-4 mb-12">
-          <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-4xl">
-            <span className="mr-2"><PhoneCall /></span>
-            Launch your AI Team
-          </Button>
+          <a
+            href="https://www.arrowhitech.com/contact-us/"
+            target="_blank"
+            rel="noopener noreferrer"
+            
+          >
+            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-4xl">
+              <span className="mr-2"><PhoneCall /></span>
+              Launch your AI Team
+            </Button>
+
+          </a>
+          
 
           <div className="flex items-center">
             <Avatar className="w-6 h-6 border-2 border-white -ml-2 first:ml-0 flex-shrink-0">

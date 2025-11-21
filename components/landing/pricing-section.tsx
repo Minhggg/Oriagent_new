@@ -15,7 +15,7 @@ import {
   MessageSquare,
   Clock,
   Zap,
-  Star
+  Star, Phone, Settings, Rocket, Pencil, Timer, Link 
 } from "lucide-react";
 
 export function PricingSection() {
@@ -121,12 +121,36 @@ export function PricingSection() {
 
                     {/* Features */}
                     <div className="space-y-4 mb-8 flex-grow">
-                      <div className="flex items-start gap-3"><span className="text-lg">📅</span><span className="text-sm">30-min strategy call</span></div>
-                      <div className="flex items-start gap-3"><span className="text-lg">⚙️</span><span className="text-sm">1 custom workflow per month</span></div>
-                      <div className="flex items-start gap-3"><span className="text-lg">🚀</span><span className="text-sm">Launch + team training session</span></div>
-                      <div className="flex items-start gap-3"><span className="text-lg">✏️</span><span className="text-sm">2 revision rounds included</span></div>
-                      <div className="flex items-start gap-3"><span className="text-lg">⏱️</span><span className="text-sm">48-hour response time</span></div>
-                      <div className="flex items-start gap-3"><span className="text-lg">🔗</span><span className="text-sm">Standard API integrations</span></div>
+                      <div className="flex items-start gap-3">
+                        <PhoneCall className="w-5 h-5 text-green-600" />
+                        <span className="text-sm">30-min strategy call</span>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <Settings className="w-5 h-5 text-blue-600" />
+                        <span className="text-sm">1 custom workflow per month</span>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <Rocket className="w-5 h-5 text-purple-600" />
+                        <span className="text-sm">Launch + team training session</span>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <Pencil className="w-5 h-5 text-orange-600" />
+                        <span className="text-sm">2 revision rounds included</span>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <Timer className="w-5 h-5 text-red-600" />
+                        <span className="text-sm">48-hour response time</span>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <Link className="w-5 h-5 text-indigo-600" />
+                        <span className="text-sm">Standard API integrations</span>
+                      </div>
+
                     </div>
 
                     {/* Pricing */}
@@ -140,15 +164,36 @@ export function PricingSection() {
 
                     {/* CTAs */}
                     <div className="flex gap-3">
-                      {/* BUTTON ĐÃ ĐƯỢC CHỈNH SỬA THEO YÊU CẦU: ICON SÁT TRÁI, CHỮ CĂN GIỮA */}
-                      <Button className="flex-1 bg-black text-white hover:bg-gray-900 rounded-full relative flex items-center justify-center">
-                        <PhoneCall className="w-4 h-4 absolute left-4" /> {/* Icon sát trái tuyệt đối */}
-                        <span>Book a call</span> {/* Chữ tự động căn giữa do flex justify-center */}
-                      </Button>
 
-                      <Button variant="ghost" className="flex-1 bg-white text-black hover:bg-gray-900 hover:bg-opacity-20 rounded-full">
-                        <Mail className="mr-2 h-4 w-4" /> Email us
-                      </Button>
+                      {/* BOOK A CALL */}
+                      <a
+                        href="https://www.arrowhitech.com/contact-us/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1"
+                      >
+                        <Button className="w-full gap-2 bg-black text-white hover:bg-gray-900 rounded-full relative flex items-center justify-center">
+                          <PhoneCall className="w-4 h-4 " />
+                          <span>Book a call</span>
+                        </Button>
+                      </a>
+
+                      {/* EMAIL US */}
+                      <a
+                        href="https://www.arrowhitech.com/contact-us/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1"
+                      >
+                        <Button
+                          variant="ghost"
+                          className="w-full bg-white text-black hover:bg-gray-900 hover:bg-opacity-20 rounded-full flex items-center justify-center gap-2"
+                        >
+                          <Mail className="h-4 w-4" />
+                          <span>Email us</span>
+                        </Button>
+                      </a>
+
                     </div>
 
                     {/* Limited Offer */}
@@ -314,7 +359,7 @@ export function PricingSection() {
                       <div className="mb-8">
                         <p className="text-slate-400 text-sm mb-2">Starting at</p>
                         <div className="flex items-baseline gap-2 mb-2">
-                          <span className="text-5xl font-bold text-white">$5,999</span>
+                          <span className="text-5xl font-bold text-white">$59,99</span>
                           <span className="text-slate-400">/month</span>
                         </div>
                         <div className="flex items-center gap-3">
@@ -325,14 +370,30 @@ export function PricingSection() {
 
                       {/* CTA Buttons */}
                       <div className="flex flex-col sm:flex-row gap-3">
-                        <button className="flex-1 px-6 py-3 rounded-full bg-amber-400 text-slate-950 font-semibold hover:bg-amber-300 transition-colors flex items-center justify-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          Book a call
-                        </button>
-                        <button className="flex-1 px-6 py-3 rounded-full border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
-                          <Mail className="w-4 h-4" />
-                          Email us
-                        </button>
+                        <a
+                          href="https://www.arrowhitech.com/contact-us/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1"
+                          >
+                          <button className="w-full px-2 py-3 rounded-full bg-amber-400 text-slate-950 font-semibold hover:bg-amber-300 transition-colors flex items-center justify-center gap-2">
+                            <Calendar className="w-4 h-4" />
+                            Book a call
+                          </button>
+                        </a>
+
+                        <a
+                          href="https://www.arrowhitech.com/contact-us/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1"
+                          >
+                          <button className="flex-1 px-6 py-3 rounded-full border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+                            <Mail className="w-4 h-4" />
+                            Email us
+                          </button>
+
+                          </a>
                       </div>
 
                       <p className="text-xs text-slate-500 mt-4">

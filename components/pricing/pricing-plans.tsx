@@ -53,9 +53,17 @@ export function PricingPlans() {
                 <span className="text-muted-foreground">/ month</span>
               </div>
             </div>
-            <Button variant="outline" className="w-full rounded-2xl mb-8 h-12 text-base bg-gray-300 border-0 hover:bg-gray-100">
-              Sign In
-            </Button>
+            <a
+              href="https://app.oriagent.com/signin"
+              target="_blank"
+              rel="noopener noreferrer"
+              
+            >
+              <Button variant="outline" className="w-full rounded-2xl mb-8 h-12 text-base bg-gray-300 border-0 hover:bg-gray-100">
+                Sign In
+              </Button>
+            </a>
+            
             <div className="space-y-4 flex-1">
               <div className="text-lg font-medium text-muted-foreground mb-4 text-red-600">Access</div>
               <div className="flex items-center gap-3 text-sm">
@@ -130,7 +138,15 @@ export function PricingPlans() {
                 <span className="text-muted-foreground">/ month</span>
               </div>
             </div>
-            <Button className="w-full rounded-2xl mb-8 h-12 text-base bg-[#d5ee71] text-black hover:bg-[#b3e600]">Sign In</Button>
+            <a
+              href="https://app.oriagent.com/signin"
+              target="_blank"
+              rel="noopener noreferrer"
+              
+            >
+              <Button className="w-full rounded-2xl mb-8 h-12 text-base bg-[#d5ee71] text-black hover:bg-[#b3e600]">Sign In</Button>
+            </a>
+            
             <div className="space-y-4 flex-1">
               <div className="text-lg font-medium text-muted-foreground mb-4 text-red-600">Access</div>
               <div className="flex items-center gap-3 text-sm">
@@ -214,7 +230,15 @@ export function PricingPlans() {
                 <span className="text-muted-foreground">/ month</span>
               </div>
             </div>
-            <Button className="w-full rounded-2xl mb-8 h-12 text-base bg-black text-white hover:bg-gray-700">Sign In</Button>
+            <a
+              href="https://app.oriagent.com/signin"
+              target="_blank"
+              rel="noopener noreferrer"
+              
+            >
+              <Button className="w-full rounded-2xl mb-8 h-12 text-base bg-black text-white hover:bg-gray-700">Sign In</Button>
+            </a>
+            
             <div className="space-y-4 flex-1">
               <div className="text-lg font-medium text-muted-foreground mb-4 text-red-600">Access</div>
               <div className="flex items-center gap-3 text-sm">
@@ -305,9 +329,17 @@ export function PricingPlans() {
               <span className="text-4xl font-medium">$0</span>
               <span className="text-muted-foreground">/ month</span>
             </div>
-            <Button  className="w-full rounded-2xl mb-8 h-12 text-white text-lg bg-black hover:bg-green-400">
-              Sign In
-            </Button>
+            <a
+              href="https://app.oriagent.com/signin"
+              target="_blank"
+              rel="noopener noreferrer"
+              
+            >
+              <Button  className="w-full rounded-2xl mb-8 h-12 text-white text-lg bg-black hover:bg-green-400">
+                Sign In
+              </Button>
+            </a>
+            
             <div className="space-y-4">
               <div className="text-lg font-bold text-muted-foreground mb-4 text-black">Access</div>
               <div className="flex items-center gap-3 text-sm">
@@ -364,8 +396,23 @@ export function PricingPlans() {
               <span className="text-4xl font-medium">$$$</span>
             </div>
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <Button className="w-full rounded-2xl h-12 text-base bg-white text-black hover:bg-gray-300">Email Us</Button>
-              <Button className="w-full rounded-2xl h-12 text-base bg-white text-black hover:bg-gray-300">Book a Call</Button>
+              <a
+                href="https://www.arrowhitech.com/contact-us/"
+                target="_blank"
+                rel="noopener noreferrer"
+                
+              >
+                <Button className="w-full rounded-2xl h-12 text-base bg-white text-black hover:bg-gray-300">Email Us</Button>
+              </a>
+              <a
+                href="https://www.arrowhitech.com/contact-us/"
+                target="_blank"
+                rel="noopener noreferrer"
+                
+              >
+                <Button className="w-full rounded-2xl h-12 text-base bg-white text-black hover:bg-gray-300">Book a Call</Button>
+              </a>
+
             </div>
             <div className="space-y-4">
               <div className="text-lg font-bold text-gray-400 mb-4">Access</div>
