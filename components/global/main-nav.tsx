@@ -142,12 +142,12 @@ export function MainNav() {
       {/* --- NAVBAR CHÍNH --- */}
       {/* Thêm dark: class cho nền và border */}
       <div className="sticky top-0 z-40 w-full bg-white border-b border-gray-100 dark:bg-zinc-900 dark:border-zinc-800">
-        <div className="flex h-20 items-center justify-between px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between px-6 lg:px-8 lg:pl-16">
 
           {/* Logo - Cập nhật màu text để hỗ trợ Dark Mode */}
-          <Link href="/" className="flex items-center gap-2 z-50">
+          <Link href="/" className="flex items-center  gap-2 z-50">
             <div className="flex text-black dark:text-white text-2xl font-bold tracking-tighter">
-              ✦✦
+              <img src="/logo-oriagent.svg" alt="Oriagent Logo" className="h-8 w-auto mr-2" />
             </div>
           </Link>
 
@@ -286,7 +286,7 @@ export function MainNav() {
                         <h3 className="text-sm font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
                           {item.label}
                         </h3>
-                        <div className="space-y-5 pl-2  dark:border-zinc-800 ml-1">
+                        <div className="space-y-5 pl-2 dark:border-zinc-800 ml-1">
                           {item.links.map((link) => (
                             <Link
                               key={link.label}

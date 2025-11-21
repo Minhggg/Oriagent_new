@@ -25,14 +25,14 @@ export function AiAgentsSection() {
         <div className="border-l border-r border-y border-gray-200 bg-white rounded-2xl shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-x divide-y divide-gray-200">
             <div className="p-8 h-full flex flex-col min-h-130 max-h-[40rem] relative overflow-hidden">
-              <div className="w-full h-full absolute top-0 left-4 z-1">
+              <div className="w-full h-full absolute top-0 left-1 z-1">
                 <ChatWidget />
               </div>
               <div
-                className="absolute bottom-0  right-0 w-full p-6 bg-white text-center z-20 shadow-[_0_-20px_10px_rgba(0,0,0,0.15)]  shadow-gray-100/30"
+                className="absolute bottom-0  w-full p-6 bg-white text-center z-20 shadow-[_0_-20px_10px_rgba(0,0,0,0.15)]  shadow-gray-100/30"
                 style={{ height: '33%', minHeight: '10rem' }}
               >
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Real-time AI Collaboration</h3>
+                <h3 className="text-xl text-center font-semibold text-gray-800 mb-2">Real-time AI Collaboration</h3>
                 <p className="text-gray-600 text-sm max-w-md mx-auto">
                   Experience real-time assistance. Ask your AI Agent to coordinate
                   tasks, answer questions, and maintain team alignment.

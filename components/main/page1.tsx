@@ -3,8 +3,9 @@
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+
 // IMPORT BIỂU TƯỢNG
-import { Mail, PhoneCall, PlusCircle, Workflow, Bot, ChartArea, Calendar } from "lucide-react";
+import { Mail, PhoneCall, PlusCircle, Workflow, Bot, ChartArea, Calendar,Heart } from "lucide-react";
 export function MainPage() {
   return (
     <section className="">
@@ -54,7 +55,7 @@ export function MainPage() {
         </ul>
 
         {/* CTA Buttons */}
-        <div className="flex gap-4 mb-12">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-4 mb-12">
           <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-4xl">
             <span className="mr-2"><PhoneCall /></span>
             Launch your AI Team
@@ -76,12 +77,13 @@ export function MainPage() {
             <Avatar className="w-6 h-6 border-2 border-white -ml-2 flex-shrink-0">
               <AvatarImage src="/person5.png" />
             </Avatar>
+            <div className="text-xs ml-2">
+              <p className="font-semibold text-gray-900">13,000+ <Heart className="inline w-3 h-3 text-red-500 fill-red-500" /></p>
+              <p className="text-gray-600">Loved by users</p>
+            </div>
           </div>
 
-          <div className="text-xs">
-            <p className="font-semibold text-gray-900">47,000+</p>
-            <p className="text-gray-600">Loved by users</p>
-          </div>
+          
         </div>
         <div className="mt-10 flex flex-col items-start gap-2 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
           {/* Label nhỏ bên trên */}

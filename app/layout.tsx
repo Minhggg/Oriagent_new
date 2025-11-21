@@ -16,6 +16,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Oriagent",
   description: "Your best teammates, multiplied. Working Smarter, Faster, and Stronger.",
+  icons: {
+    icon: "/logo-oriagent.svg",
+  },
 };
 
 export default function RootLayout({
