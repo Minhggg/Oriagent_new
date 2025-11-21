@@ -11,9 +11,8 @@ export function Testimonials() {
           </Badge>
           <h2 className="text-4xl md:text-5xl font-medium mb-4">
             What{" "}
-            <span className="relative inline-block">
+            <span className="relative inline-block underline underline-offset-3 decoration-4 decoration-[#ccff00]">
               people
-              <span className="absolute bottom-1 left-0 w-full h-3 bg-[#ccff00] -z-10 opacity-60"></span>
             </span>{" "}
             say
           </h2>

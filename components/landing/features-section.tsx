@@ -2,7 +2,7 @@
 
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
-import { Mail, PhoneCall, Rocket, BadgeCheckIcon, Lightbulb, ZapIcon, CalendarCheck } from "lucide-react";
+import { Mail, PhoneCall, Rocket, BadgeCheckIcon, Lightbulb, ZapIcon, CalendarCheck, Clock,AlarmCheck, ChartBarIncreasing } from "lucide-react";
 export function FeaturesSection() {
   return (
     <section className="pb-20 px-4 sm:px-6 lg:px-8 bg-white ">
@@ -32,15 +32,15 @@ export function FeaturesSection() {
             {/* Benefits List */}
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <span className="text-blue-600 text-lg font-bold">✓</span>
+                <CalendarCheck className="text-blue-600 h-5 w-5 font-bold" />
                 <span className="text-gray-700 text-sm">Cut costs by up to 30%</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-orange-600 text-lg font-bold">⏱</span>
+                <AlarmCheck className="text-orange-600 h-5 w-5 font-bold" />
                 <span className="text-gray-700 text-sm">Save 15+ hours per employee per week</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-purple-600 text-lg font-bold">📈</span>
+                <ChartBarIncreasing className="text-green-600 h-5 w-5 font-bold" />
                 <span className="text-gray-700 text-sm">Scale what works — without more headcount</span>
               </div>
             </div>
