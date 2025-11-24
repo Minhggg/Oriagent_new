@@ -1,13 +1,13 @@
 // app/blog/page.tsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { getBlogPosts } from '@/lib/contentful';
+import { getUseCases } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 
 export const revalidate = 60; // Cập nhật lại mỗi 60s
 
 export default async function BlogPage() {
-  const allPosts = await getBlogPosts();
+  const allPosts = await getUseCases();
 
   // --- PHÂN CHIA BỐ CỤC ---
   const heroPost = allPosts[0];              // Bài 1 (To nhất)
@@ -19,14 +19,14 @@ export default async function BlogPage() {
     <div className="container mx-auto py-16 px-4 max-w-7xl">
       {/* Header */}
       <div className="text-center mb-16">
-        <span className="bg-pink-300 text-black px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide">
-          Use Case
+        <span className="bg-yellow-300 text-black px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide">
+          Blog
         </span>
         <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-2">
-          Read the latest Useful Case
+          Read the latest articles
         </h1>
         <p className="text-gray-500 max-w-2xl mx-auto">
-          Explore our collection of in-depth articles that break down how AI agents are transforming workflows and reshaping industries around the world.
+          Explore our collection of articles about AI agents and their impact on various industries.
         </p>
       </div>
 
@@ -34,7 +34,7 @@ export default async function BlogPage() {
       {heroPost && (
         <div className="mb-16 group cursor-pointer">
           <Link href={`/blog/${heroPost.fields.slug}`}>
-            <div className="grid md:grid-cols-5 gap-8 items-center border rounded-2xl p-4 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+            <div className="grid md:grid-cols-5 gap-8 items-start border rounded-2xl p-4  hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
               <div className="md:col-span-3 relative h-[300px] md:h-[400px] rounded-xl overflow-hidden">
                 {heroPost.fields.thumbnail && (
                   <Image
@@ -46,7 +46,7 @@ export default async function BlogPage() {
                   />
                 )}
               </div>
-              <div className="md:col-span-2 flex flex-col justify-center">
+              <div className="md:col-span-2 flex flex-col justify-start pt-4 mt-4 md:mt-0">
                 <div className="text-sm text-gray-500 mb-2">
                    {formatDate(heroPost.sys.createdAt)}
                 </div>
@@ -135,9 +135,9 @@ export default async function BlogPage() {
       {remainingPosts.length > 0 && (
         <div className="border-t pt-16">
           <div className="flex justify-between items-end mb-8">
-            <h3 className="text-2xl font-bold">Bài viết cũ hơn</h3>
+            <h3 className="text-2xl font-bold">Previous Article</h3>
             <span className="text-sm text-gray-400 hidden md:block">
-              Kéo sang ngang để xem thêm &rarr;
+              Scroll horizontally to see more 
             </span>
           </div>
           

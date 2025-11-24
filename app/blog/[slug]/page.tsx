@@ -1,5 +1,5 @@
 // app/blog/[slug]/page.tsx
-import { getBlogPostBySlug } from '@/lib/contentful';
+import { getUseCaseBySlug } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -36,7 +36,7 @@ export default async function BlogPostPage({ params }: Props) {
   // 👇 QUAN TRỌNG: Phải await params trước khi lấy slug
   const { slug } = await params; 
   
-  const post = await getBlogPostBySlug(slug);
+  const post = await getUseCaseBySlug(slug);
 
   if (!post) {
     return notFound();

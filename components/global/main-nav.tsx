@@ -190,7 +190,7 @@ export function MainNav() {
 
           {/* Mobile Menu Trigger */}
           <button
-            className="md:hidden p-2 text-gray-600 hover:text-black dark:text-zinc-400 dark:hover:text-white z-50"
+            className="md:hidden p-2 text-gray-700 hover:text-black dark:text-zinc-400 dark:hover:text-white z-50"
             onClick={() => setIsMobileMenuOpen(true)}
           >
             <Menu className="h-6 w-6" />
@@ -227,7 +227,7 @@ export function MainNav() {
                   <div key={item.label}>
                     {item.dropdown ? (
                       <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-gray-500 dark:text-zinc-400 uppercase tracking-wider">
+                        <h3 className="text-lg font-medium text-black dark:text-zinc-400  tracking-wider">
                           {item.label}
                         </h3>
                         <div className="space-y-5 pl-2 dark:border-zinc-800 ml-1">
@@ -249,7 +249,7 @@ export function MainNav() {
                         <Link
                           href={item.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="block text-lg font-medium text-gray-900 hover:text-black dark:text-white dark:hover:text-gray-200"
+                          className="block text-lg font-medium text-black hover:text-gray-700 dark:text-white dark:hover:text-gray-200"
                         >
                           {item.label}
                         </Link>
