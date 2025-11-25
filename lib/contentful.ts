@@ -1,36 +1,35 @@
 import { createClient } from 'contentful';
 
-// ---------------------------------------------------------
-// 1. KIỂM TRA BIẾN MÔI TRƯỜNG (Tránh lỗi crash ứng dụng)
-// ---------------------------------------------------------
+/* ---------------------------------------------------------
+ * 1. KIỂM TRA ENV
+ * --------------------------------------------------------- */
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 if (!spaceId || !accessToken) {
   throw new Error(
-    '❌ LỖI CONFIG: Không tìm thấy biến môi trường. Hãy kiểm tra file .env.local đã có CONTENTFUL_SPACE_ID và CONTENTFUL_ACCESS_TOKEN chưa.'
+    '❌ LỖI CONFIG: Chưa cấu hình CONTENTFUL_SPACE_ID hoặc CONTENTFUL_ACCESS_TOKEN trong .env'
   );
 }
 
-// ---------------------------------------------------------
-// 2. KHỞI TẠO CLIENT
-// ---------------------------------------------------------
+/* ---------------------------------------------------------
+ * 2. KHỞI TẠO CLIENT
+ * --------------------------------------------------------- */
 export const client = createClient({
   space: spaceId,
   accessToken: accessToken,
 });
 
-// ---------------------------------------------------------
-// 3. ĐỊNH NGHĨA TYPE (INTERFACE)
-// ---------------------------------------------------------
+/* ---------------------------------------------------------
+ * 3. KIỂU DỮ LIỆU (INTERFACE CHUNG)
+ * --------------------------------------------------------- */
 
-// Interface cho hình ảnh (Dùng chung cho thumbnail và cover)
 interface ContentfulImage {
   fields: {
     file: {
       url: string;
       details?: {
-        image: {
+        image?: {
           width: number;
           height: number;
         };
@@ -40,8 +39,7 @@ interface ContentfulImage {
   };
 }
 
-// Interface chuẩn cho Bài Viết (Blog Post)
-export interface BlogPost {
+export interface BaseEntry {
   sys: {
     id: string;
     createdAt: string;
@@ -51,47 +49,68 @@ export interface BlogPost {
     title: string;
     slug: string;
     excerpt?: string;
-    content: any; // Sau này sẽ render bằng @contentful/rich-text-react-renderer
-    
-    // Hình ảnh
+    content?: any;
     thumbnail?: ContentfulImage;
     coverImage?: ContentfulImage;
-    
-    // Tags (nếu bạn có thêm trường tags dạng text list)
     tags?: string[];
   };
 }
 
-// ---------------------------------------------------------
-// 4. CÁC HÀM LẤY DỮ LIỆU (API CALLS)
-// ---------------------------------------------------------
+/* ---------------------------------------------------------
+ * 4. GENERIC FUNCTION – DÙNG CHUNG CHO MỌI CONTENT TYPE
+ * --------------------------------------------------------- */
 
-/**
- * Lấy danh sách bài viết, sắp xếp mới nhất lên đầu
- */
-export async function getBlogPosts() {
-  const response = await client.getEntries({
-    content_type: 'post', // LƯU Ý: ID này phải trùng với "Content Model ID" trong Contentful
-    order: ['-sys.createdAt'], 
+async function getEntriesByType<T>(contentType: string): Promise<T[]> {
+  const res = await client.getEntries({
+    content_type: contentType,
+    order: ['-sys.createdAt'],
   });
 
-  return response.items as unknown as BlogPost[];
+  return res.items as unknown as T[];
 }
 
-/**
- * Lấy chi tiết 1 bài viết dựa vào Slug
- */
-export async function getBlogPostBySlug(slug: string) {
-  const response = await client.getEntries({
-    content_type: 'post',
+async function getEntryBySlug<T>(contentType: string, slug: string): Promise<T | null> {
+  const res = await client.getEntries({
+    content_type: contentType,
     'fields.slug': slug,
     limit: 1,
   });
 
-  // Kiểm tra xem có tìm thấy bài nào không
-  if (response.items.length > 0) {
-    return response.items[0] as unknown as BlogPost;
-  }
+  return res.items.length ? (res.items[0] as unknown as T) : null;
+}
 
-  return null; // Trả về null nếu không tìm thấy (để trang hiển thị 404)
+/* ---------------------------------------------------------
+ * 5. BLOG POST (Blog of Oriagent)
+ * --------------------------------------------------------- */
+
+export async function getOriagentBlogPosts() {
+  return getEntriesByType<BaseEntry>('blogPost'); // ID thật trong Contentful
+}
+
+export async function getOriagentBlogPostBySlug(slug: string) {
+  return getEntryBySlug<BaseEntry>('blogPost', slug);
+}
+
+/* ---------------------------------------------------------
+ * 6. POST (Blog của MIAgent)
+ * --------------------------------------------------------- */
+
+export async function getMiAgentPosts() {
+  return getEntriesByType<BaseEntry>('post');
+}
+
+export async function getMiAgentPostBySlug(slug: string) {
+  return getEntryBySlug<BaseEntry>('post', slug);
+}
+
+/* ---------------------------------------------------------
+ * 7. USE CASE (Use Cases of Oriagent)
+ * --------------------------------------------------------- */
+
+export async function getUseCases() {
+  return getEntriesByType<BaseEntry>('useCase');
+}
+
+export async function getUseCaseBySlug(slug: string) {
+  return getEntryBySlug<BaseEntry>('useCase', slug);
 }

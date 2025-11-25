@@ -100,7 +100,7 @@ export function MainNav() {
       dropdown: true,
       links: [
         { href: "/blog", label: "Blog", description: "Bài viết chuyên sâu", icon: BookOpen },
-        { href: "/use-case", label: "Use Cases", description: "Ví dụ ứng dụng thực tế", icon: Target },
+        { href: "/use-cases", label: "Use Cases", description: "Ví dụ ứng dụng thực tế", icon: Target },
         { href: "/templates", label: "Template", description: "Các mẫu sẵn có", icon: LayoutTemplate },
         { href: "/legal", label: "Legal", description: "Thông tin pháp lý", icon: ShieldCheck },
       ]

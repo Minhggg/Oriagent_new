@@ -1,19 +1,19 @@
-// app/blog/page.tsx
+// app/use-cases/page.tsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { getBlogPosts } from '@/lib/contentful';
+import { getUseCases } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 
-export const revalidate = 60; // Cập nhật lại mỗi 60s
+export const revalidate = 60; 
 
-export default async function BlogPage() {
-  const allPosts = await getBlogPosts();
+export default async function UseCasePage() { // Đổi tên function cho chuẩn
+  const allPosts = await getUseCases();
 
   // --- PHÂN CHIA BỐ CỤC ---
-  const heroPost = allPosts[0];              // Bài 1 (To nhất)
-  const middlePosts = allPosts.slice(1, 3);  // Bài 2, 3 (Vừa)
-  const bottomPosts = allPosts.slice(3, 6);  // Bài 4, 5, 6 (Nhỏ)
-  const remainingPosts = allPosts.slice(6);  // Bài 7 trở đi (Lưới danh sách)
+  const heroPost = allPosts[0];
+  const middlePosts = allPosts.slice(1, 3);
+  const bottomPosts = allPosts.slice(3, 6);
+  const remainingPosts = allPosts.slice(6);
 
   return (
     <div className="container mx-auto py-16 px-4 max-w-7xl">
@@ -26,14 +26,16 @@ export default async function BlogPage() {
           Read the latest Useful Case
         </h1>
         <p className="text-gray-500 max-w-2xl mx-auto">
-          Explore our collection of in-depth articles that break down how AI agents are transforming workflows and reshaping industries around the world.
+          Explore our collection of in-depth articles that break down how AI agents are transforming workflows...
         </p>
       </div>
 
-      {/* SECTION 1: HERO POST (Giữ nguyên heroPost) */}
+      {/* SECTION 1: HERO POST */}
       {heroPost && (
         <div className="mb-16 group cursor-pointer">
-          <Link href={`/blog/${heroPost.fields.slug}`}>
+          {/* ❌ LỖI CŨ: href={`/blog/${heroPost.fields.slug}`} */}
+          {/* ✅ SỬA LẠI: Trỏ về đúng folder use-cases */}
+          <Link href={`/use-cases/${heroPost.fields.slug}`}>
             <div className="grid md:grid-cols-5 gap-8 items-center border rounded-2xl p-4 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
               <div className="md:col-span-3 relative h-[300px] md:h-[400px] rounded-xl overflow-hidden">
                 {heroPost.fields.thumbnail && (
@@ -42,7 +44,7 @@ export default async function BlogPage() {
                     alt={heroPost.fields.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    priority // ✅ Giữ priority cho bài đầu tiên
+                    priority 
                   />
                 )}
               </div>
@@ -62,21 +64,20 @@ export default async function BlogPage() {
         </div>
       )}
 
-      {/* SECTION 2: MIDDLE POSTS (Sửa heroPost -> post) */}
+      {/* SECTION 2: MIDDLE POSTS */}
       {middlePosts.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {middlePosts.map((post) => (
-            <Link key={post.sys.id} href={`/blog/${post.fields.slug}`} className="group">
+            // ✅ SỬA LẠI HREF
+            <Link key={post.sys.id} href={`/use-cases/${post.fields.slug}`} className="group">
               <div className="h-full flex flex-col border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="relative h-[250px] w-full overflow-hidden">
-                  {/* 👇 ĐÃ SỬA: Dùng post thay vì heroPost */}
                   {post.fields.thumbnail && (
                     <Image
                       src={`https:${post.fields.thumbnail.fields.file.url}`}
                       alt={post.fields.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      // ❌ Đã xóa priority để tăng tốc độ load
                     />
                   )}
                 </div>
@@ -97,14 +98,14 @@ export default async function BlogPage() {
         </div>
       )}
 
-      {/* SECTION 3: BOTTOM POSTS (Sửa heroPost -> post) */}
+      {/* SECTION 3: BOTTOM POSTS */}
       {bottomPosts.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {bottomPosts.map((post) => (
-            <Link key={post.sys.id} href={`/blog/${post.fields.slug}`} className="group">
+            // ✅ SỬA LẠI HREF
+            <Link key={post.sys.id} href={`/use-cases/${post.fields.slug}`} className="group">
               <div className="h-full border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
                 <div className="relative h-[200px] w-full overflow-hidden">
-                  {/* 👇 ĐÃ SỬA: Dùng post thay vì heroPost */}
                   {post.fields.thumbnail && (
                     <Image
                       src={`https:${post.fields.thumbnail.fields.file.url}`}
@@ -131,29 +132,26 @@ export default async function BlogPage() {
         </div>
       )}
 
-      {/* SECTION 4: REMAINING POSTS (Dạng thanh trượt ngang) */}
+      {/* SECTION 4: REMAINING POSTS */}
       {remainingPosts.length > 0 && (
         <div className="border-t pt-16">
           <div className="flex justify-between items-end mb-8">
-            <h3 className="text-2xl font-bold">Bài viết cũ hơn</h3>
+            <h3 className="text-2xl font-bold">Các Use Case khác</h3>
             <span className="text-sm text-gray-400 hidden md:block">
               Kéo sang ngang để xem thêm &rarr;
             </span>
           </div>
           
-          {/* 👇 CONTAINER TRƯỢT NGANG */}
           <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
             {remainingPosts.map((post) => (
               <Link 
                 key={post.sys.id} 
-                href={`/blog/${post.fields.slug}`} 
-                className="group min-w-[280px] md:min-w-[300px] snap-start" // 👈 Quan trọng: Set chiều rộng tối thiểu
+                // ✅ SỬA LẠI HREF
+                href={`/use-cases/${post.fields.slug}`} 
+                className="group min-w-[280px] md:min-w-[300px] snap-start"
               >
                 <div className="h-full flex flex-col border rounded-xl overflow-hidden hover:shadow-md transition-shadow bg-white dark:bg-slate-900">
-                  
-                  {/* Ảnh Thumbnail */}
                   <div className="relative h-[160px] w-full">
-                    {/* SỬA: Dùng post thay vì heroPost */}
                     {post.fields.thumbnail ? (
                       <Image
                         src={`https:${post.fields.thumbnail.fields.file.url}`}
@@ -162,14 +160,12 @@ export default async function BlogPage() {
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                       // Fallback nếu không có ảnh (để không bị vỡ layout)
                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
                           <span className="text-gray-400 text-xs">No Image</span>
                        </div>
                     )}
                   </div>
 
-                  {/* Nội dung */}
                   <div className="p-4 flex-1 flex flex-col">
                     <div className="text-xs text-gray-500 mb-2">
                        {formatDate(post.sys.createdAt)}
@@ -177,7 +173,6 @@ export default async function BlogPage() {
                     <h4 className="text-base font-bold mb-2 group-hover:text-primary line-clamp-2">
                       {post.fields.title}
                     </h4>
-                    {/* Thêm đoạn tóm tắt ngắn cho đẹp card */}
                     <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-auto">
                       {post.fields.excerpt}
                     </p>
@@ -188,8 +183,6 @@ export default async function BlogPage() {
           </div>
         </div>
       )}
-
-    
     </div>
   );
 }
