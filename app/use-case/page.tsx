@@ -1,13 +1,13 @@
 // app/blog/page.tsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { getUseCases } from '@/lib/contentful';
+import { getMiAgentPosts } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 
 export const revalidate = 60; // Cập nhật lại mỗi 60s
 
 export default async function BlogPage() {
-  const allPosts = await getUseCases();
+  const allPosts = await getMiAgentPosts();
 
   // --- PHÂN CHIA BỐ CỤC ---
   const heroPost = allPosts[0];              // Bài 1 (To nhất)

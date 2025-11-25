@@ -1,5 +1,5 @@
 // app/blog/[slug]/page.tsx
-import { getMiAgentPostBySlug } from '@/lib/contentful';
+import { getMiAgentPostBySlug} from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
