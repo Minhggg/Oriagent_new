@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // Đảm bảo các import này hoạt động trong dự án của bạn
-import RotatingGlobe from '@/components/landing/rotating-globe'
+
 import { Badge } from '@/components/ui/badge'
 
 interface TrustFeature {
@@ -99,7 +99,7 @@ export default function TrustSection({
           {/* Right Feature with Rotating Globe */}
           <div className="flex flex-col items-center justify-center">
             <div className="w-64 h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-              <RotatingGlobe />
+              
             </div>
             <div className="text-center space-y-3">
               <h4 className="text-xl font-bold text-gray-900">
