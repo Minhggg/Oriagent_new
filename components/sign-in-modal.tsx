@@ -60,7 +60,7 @@ export function SignInModal({ open, onOpenChange }: SignInModalProps) {
 
           <div className="mt-8 text-center">
             <p className="text-[10px] text-zinc-500">
-              By using AiAgent.app you agree to our{" "}
+              By using oriagent.com you agree to our{" "}
               <a href="#" className="underline hover:text-zinc-400">
                 Terms of use
               </a>

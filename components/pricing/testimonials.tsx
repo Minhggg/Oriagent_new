@@ -53,7 +53,7 @@ export function Testimonials() {
           {/* Row 2 */}
           <div className="md:col-span-1 p-6 border rounded-2xl bg-white flex flex-col justify-center items-center text-center">
             <div className="text-4xl font-bold text-[#8cc63f] mb-1">40,000+</div>
-            <div className="text-xs text-[#8cc63f] font-medium">Users trust Aiagent.app</div>
+            <div className="text-xs text-[#8cc63f] font-medium">Users trust oriagent.com</div>
           </div>
           <div className="md:col-span-3 p-6 border rounded-2xl bg-white">
             <p className="text-sm mb-6">

@@ -67,7 +67,7 @@ export default function ChangeLogPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Input readOnly value="https://aiagent.app/changelog" className="flex-1 bg-muted/10" />
+                  <Input readOnly value="https://oriagent.com/changelog" className="flex-1 bg-muted/10" />
                   <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                     <LinkIcon className="mr-2 h-4 w-4" />
                     Copy URL

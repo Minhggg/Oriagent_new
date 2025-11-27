@@ -16,7 +16,7 @@ export default function TermsOfUsePage() {
 
           <p className="mb-6">
             We are <span className="font-bold text-gray-900">BIG CORP LIMITED</span>, doing business as{" "}
-            <span className="font-bold text-gray-900">AiAgent.app</span> ('
+            <span className="font-bold text-gray-900">oriagent.com</span> ('
             <span className="font-bold text-gray-900">Company</span>', '
             <span className="font-bold text-gray-900">we</span>', '<span className="font-bold text-gray-900">us</span>',
             or '<span className="font-bold text-gray-900">our</span>'), a company registered in{" "}
@@ -27,7 +27,7 @@ export default function TermsOfUsePage() {
           <p className="mb-6">
             We operate the website{" "}
             <a href="#" className="text-blue-500 hover:underline">
-              aiagent.app
+              oriagent.com
             </a>{" "}
             (the '<span className="font-bold text-gray-900">Site</span>'), as well as any other related products and
             services that refer or link to these legal terms (the '
@@ -37,8 +37,8 @@ export default function TermsOfUsePage() {
 
           <p className="mb-6">
             You can contact us by email at{" "}
-            <a href="mailto:hello@aiagent.app" className="text-blue-500 hover:underline">
-              hello@aiagent.app
+            <a href="mailto:hello@oriagent.com" className="text-blue-500 hover:underline">
+              hello@oriagent.com
             </a>{" "}
             or by mail to <span className="font-bold text-gray-900">7 Navarre Road, London, SW9 7RU, England</span>.
           </p>

@@ -15,13 +15,13 @@ export default function CookiePolicyPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6 uppercase">INTRODUCTION</h2>
 
           <p className="mb-6">
-            This Cookie Policy explains how <span className="font-bold text-gray-900">AiAgent.app</span> ("
+            This Cookie Policy explains how <span className="font-bold text-gray-900">oriagent.com</span> ("
             <span className="font-bold text-gray-900">Company</span>", "
             <span className="font-bold text-gray-900">we</span>", "<span className="font-bold text-gray-900">us</span>",
             and "<span className="font-bold text-gray-900">our</span>") uses cookies and similar technologies to
             recognize you when you visit our website at{" "}
             <a href="#" className="text-blue-500 hover:underline">
-              aiagent.app
+              oriagent.com
             </a>{" "}
             ("<span className="font-bold text-gray-900">Website</span>"). It explains what these technologies are and
             why we use them, as well as your rights to control our use of them.

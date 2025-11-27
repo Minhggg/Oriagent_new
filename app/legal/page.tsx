@@ -7,7 +7,7 @@ export default function LegalDocsList() {
   const documents = [
     {
       title: "Terms of Use",
-      description: "Terms of Use for AiAgent.app services",
+      description: "Terms of Use for oriagent.com services",
       icon: Scale,
       colorClass: "text-blue-600",
       bgHoverClass: "hover:bg-blue-50 rounded-2xl",
@@ -25,7 +25,7 @@ export default function LegalDocsList() {
     },
     {
       title: "Privacy Policy",
-      description: "Privacy Policy for AiAgent.app services",
+      description: "Privacy Policy for oriagent.com services",
       icon: Shield,
       colorClass: "text-green-500",
       bgHoverClass: "hover:bg-green-50 rounded-2xl",

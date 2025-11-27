@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6 uppercase">PRIVACY NOTICE</h2>
 
           <p className="mb-6">
-            This privacy notice for <span className="font-bold text-gray-900">AiAgent.app</span> ('
+            This privacy notice for <span className="font-bold text-gray-900">oriagent.com</span> ('
             <span className="font-bold text-gray-900">Company</span>', '
             <span className="font-bold text-gray-900">we</span>', '<span className="font-bold text-gray-900">us</span>',
             or '<span className="font-bold text-gray-900">our</span>'), describes how and why we might collect, store,
@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
             <li>
               Visit our website at{" "}
               <a href="#" className="text-blue-500 hover:underline">
-                aiagent.app
+                oriagent.com
               </a>
               , or any website of ours that links to this privacy notice
             </li>
@@ -38,8 +38,8 @@ export default function PrivacyPolicyPage() {
             <span className="font-bold text-gray-900">Questions or concerns?</span> Reading this privacy notice will
             help you understand your privacy rights and choices. If you do not agree with our policies and practices,
             please do not use our Services. If you still have any questions or concerns, please contact us at{" "}
-            <a href="mailto:hello@aiagent.app" className="text-blue-500 hover:underline">
-              hello@aiagent.app
+            <a href="mailto:hello@oriagent.com" className="text-blue-500 hover:underline">
+              hello@oriagent.com
             </a>
             .
           </p>
